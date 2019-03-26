@@ -19,4 +19,10 @@ create table pedido (
 	primary key (id)
 );
 
+create table excluidos (
+
+	id int not null auto_increment,
+	justificativa varchar(255),
+	Primary key (id)) select numeroProcesso, tipo from pedido;
+
 
