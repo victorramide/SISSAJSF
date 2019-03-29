@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class SingleConnection {
     
     private static String url ="jdbc:mysql://localhost:3306/sissa?useTimezone=true&serverTimezone=UTC&useSSL=false";
-    private static String password="admin";
+    private static String password="Admin";
     private static String user="root";
     private static Connection connection = null;
     
