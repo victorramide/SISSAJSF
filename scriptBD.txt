@@ -1,3 +1,5 @@
+create database sissa;
+
 create table usuario (
 	id int not null auto_increment,
 	nome varchar(30) default 'Anonimo',
