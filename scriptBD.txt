@@ -15,7 +15,7 @@ create table pedido (
 	classe varchar(30),
 	tipo varchar(10),
 	prioridade bool default false,
-	sentença bool default false,
+	sentenca bool default false,
 	oab varchar(10),
 	data date,
 	primary key (id)
