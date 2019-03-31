@@ -17,7 +17,7 @@ create table pedido (
 	prioridade bool default false,
 	sentenca bool default false,
 	oab varchar(10),
-	data date,
+	dataP date,
 	primary key (id)
 );
 
