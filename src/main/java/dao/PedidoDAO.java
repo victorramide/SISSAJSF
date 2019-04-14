@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import jdbcconnection.SingleConnection;
+import model.PedidoExcluido;
 import model.PedidoModel;
 
 /**
@@ -49,7 +50,7 @@ public class PedidoDAO {
     public List<PedidoModel> listarPedidoComum() throws SQLException{
         
         List<PedidoModel> list = new ArrayList<PedidoModel>();
-        String sql = "select * from pedido where tipo != 'sentenca' and prioridade != true and sentenca != true order by id";
+        String sql = "select numeroProcesso, classe, tipo, oab from pedido where tipo != 'sentenca' and prioridade != true and sentenca != true order by id";
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet result = statement.executeQuery();
         
@@ -65,8 +66,89 @@ public class PedidoDAO {
             list.add(pedidoModel);
         }
         return list;
-    }
+    }  
     
+    public List<PedidoModel> listarPedidoPrioridade() throws SQLException{
+        
+        List<PedidoModel> list = new ArrayList<PedidoModel>();
+        String sql = "select numeroProcesso, classe, tipo, oab from pedido where tipo != 'sentenca' and prioridade = true and sentenca != true order by id";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        
+        while(result.next()){
+            PedidoModel pedidoModel = new PedidoModel();
+            
+            pedidoModel.setNumeroProcesso(result.getString("numeroProcesso"));
+            pedidoModel.setClasse(result.getString("classe"));
+            pedidoModel.setTipo(result.getString("tipo"));
+            pedidoModel.setOab(result.getString("oab"));
+            
+            
+            list.add(pedidoModel);
+        }
+        return list;
+    }  
+    public List<PedidoModel> listarPedidoSentencaComum() throws SQLException{
+        
+        List<PedidoModel> list = new ArrayList<PedidoModel>();
+        String sql = "select numeroProcesso, classe, tipo, oab, data from pedido where tipo = 'sentenca' and prioridade != true and sentenca = true order by data";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        
+        while(result.next()){
+            PedidoModel pedidoModel = new PedidoModel();
+            
+            pedidoModel.setNumeroProcesso(result.getString("numeroProcesso"));
+            pedidoModel.setClasse(result.getString("classe"));
+            pedidoModel.setTipo(result.getString("tipo"));
+            pedidoModel.setOab(result.getString("oab"));
+            pedidoModel.setData(result.getDate("data"));
+            
+            list.add(pedidoModel);
+        }
+        return list;
+    }  
+    public List<PedidoModel> listarPedidoSentencaPrioridade() throws SQLException{
+        
+        List<PedidoModel> list = new ArrayList<PedidoModel>();
+        String sql = "select numeroProcesso, classe, tipo, oab, data from pedido where tipo = 'sentenca' and prioridade = true and sentenca = true order by data";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        
+        while(result.next()){
+            PedidoModel pedidoModel = new PedidoModel();
+            
+            pedidoModel.setNumeroProcesso(result.getString("numeroProcesso"));
+            pedidoModel.setClasse(result.getString("classe"));
+            pedidoModel.setTipo(result.getString("tipo"));
+            pedidoModel.setOab(result.getString("oab"));
+            pedidoModel.setData(result.getDate("data"));
+            
+            
+            list.add(pedidoModel);
+        }
+        return list;
+    }  
+    public List<PedidoExcluido> listarPedidoExcluido() throws SQLException{
+        
+        List<PedidoExcluido> list = new ArrayList<PedidoExcluido>();
+        String sql = "select numeroProcesso, tipo, justificativa from excluidos order by id";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        
+        while(result.next()){
+            PedidoExcluido pedidoExcluido = new PedidoExcluido();
+            
+            pedidoExcluido.setNumeroProcesso(result.getString("numeroProcesso"));
+            pedidoExcluido.setTipo(result.getString("tipo"));
+            pedidoExcluido.setJustificativa(result.getString("justificativa"));
+            
+            
+            list.add(pedidoExcluido);
+        }
+        return list;
+    } 
     
+    //Criar um remover para os processos que transfere os dados para a tabela de excluídos e depois apaga da tabela principal.
     
 }
