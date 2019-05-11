@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml">
+
+    <div id="principal">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Seja Bem-Vindo(a)!</h1> 
+                <p>Esta ferramenta foi criada para auxiliar os Advogados
+                    a realizar diligências junto à Vara Cível de Candeias.
+                </p>
+                <div class="container">
+                <center><h3>Selecione uma das opções a baixo:</h3></center><br/>
+                <form action="incluir.xhtml">
+                <button type="submit" class="btn btn-dark btn-block" >INCLUIR PROCESSO NA LISTA</button> <br/> 
+                </form>
+                <button type="button" class="btn btn-dark btn-block">LISTA DE PROCESSOS</button> <br/>
+                <button type="button" class="btn btn-dark btn-block">PROCESSOS RETIRADOS DA LISTA</button> <br/> 
+                 </div>    
+            </div>
+        </div>
+    </div>
+</ui:decorate>
+

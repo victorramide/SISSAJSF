@@ -1,0 +1,28 @@
+create table usuario (
+	id int not null auto_increment,
+	nome varchar(30) default 'Anonimo',
+	email varchar(50),
+	login varchar(30) not null,
+	senha varchar(30) not null,
+	primary key(id)
+);
+
+create table pedido (	
+	id int not null auto_increment,
+	numeroProcesso varchar(25) not null,
+	classe varchar(30),
+	tipo varchar(10),
+	prioridade bool default false,
+	sentença bool default false,
+	oab varchar(10),
+	data date,
+	primary key (id)
+);
+
+create table excluidos (
+
+	id int not null auto_increment,
+	justificativa varchar(255),
+	Primary key (id)) select numeroProcesso, tipo from pedido;
+
+
