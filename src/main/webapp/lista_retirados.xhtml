@@ -1,12 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
-</html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:p="http://primefaces.org/ui">
+    
+    <div id="lista-pedidos">
+        <div class="container">
+            <div class="jumbotron">
+                <br/><h1><center>Lista de pedidos excluídos da lista</center></h1><br/>
+                <p>
+                <h:form id="formTable">
+                    <p:dataTable var="excluido" value="#{}" id="tabela5">
+                        <p:column headerText="Numero do Processo">
+                            <h:outputText value="#{pedido.numeroProcesso}" />
+                        </p:column> 
+                        <p:column headerText="Classe">
+                            <h:outputText value="#{pedido.classe}" />
+                        </p:column>    
+                        <p:column headerText="Tipo">
+                            <h:outputText value="#{pedido.tipo}" />
+                        </p:column>
+                        <p:column headerText="OAB">
+                            <h:outputText value="#{pedido.oab}" />
+                        </p:column>
+                        <p:column headerText="Justificativa">
+                            <h:outputText value="#{pedido.justificativa}" />
+                        </p:column>
+                        <p:column headerText="">
+                            <p:commandButton value="Excluir" actionListener="#{}" update="tabela">
+                                <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
+                            </p:commandButton>
+     
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                            </p:confirmDialog>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+</ui:decorate>
 

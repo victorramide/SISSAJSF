@@ -5,11 +5,8 @@
  */
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-//import jdbcconnection.SingleConnection;
 import model.UsuarioModel;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -17,12 +14,23 @@ import model.UsuarioModel;
  */
 public class UsuarioDAO {
     
-    private Connection connection;
-
-    public UsuarioDAO() {
-       // connection = SingleConnection.getConnection();
+     public void save(UsuarioModel usuario) {
+        org.hibernate.Session sessao = dao.HibernateUtil.getSession();
+        Transaction tx = null;
+        try {
+            tx = sessao.beginTransaction();
+            sessao.save(usuario);
+            sessao.flush();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e;
+        }
     }
     
+    /*
     public void create(UsuarioModel u) throws SQLException{
         try{
             String sql = "insert into usuario (nome, email, login, senha) values (?, ?, ?, ?)";
@@ -38,5 +46,6 @@ public class UsuarioDAO {
         }finally{
             connection.close();
         }
-    }    
+    }   
+    */
 }

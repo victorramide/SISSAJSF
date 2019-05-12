@@ -5,28 +5,33 @@
  */
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-//import model.PedidoExcluido;
 import model.PedidoModel;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author Victor Ramide
  */
 public class PedidoDAO {
-    
-    private Connection connection;
 
-    public PedidoDAO() {
-      //   connection = SingleConnection.getConnection();
+    public void save(PedidoModel pedido){
+        
+        org.hibernate.Session sessao = dao.HibernateUtil.getSession();
+        Transaction tx = null;
+        try {
+            tx = sessao.beginTransaction();
+            sessao.save(pedido);
+            sessao.flush();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e;
+        }     
     }
     
+    /*
     public void create(PedidoModel p) throws SQLException{
         try{
             String sql = "insert into usuario (numeroProcesso, classe, tipo, prioridade, sentenca, oab, data) values (?, ?, ?, ?, ?, ?, ?)";

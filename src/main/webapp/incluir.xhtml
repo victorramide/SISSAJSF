@@ -13,7 +13,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-
+         
         <title>SISSA - Sistema de Suporte ao Advogado</title>
 
     </h:head>
@@ -74,17 +74,50 @@
                     <div class="container"> 
                         <div class="jumbotron">
                             <h:form id="Incluir">
-
-                                <h4>Nº do Processo: <p:inputText placeholder="Ex: 8000111-11.2011" style="width: 750px;" /></h4>
-                                <h4>Classe Processual: <p:inputText placeholder="Ex: Alimentos" style="width: 728px;" /></h4>
-                                <h4>Tipo de diligencia:    <p:selectOneMenu style="width:300px; height: 40px;">                        
-                                        <f:selectItem itemLabel="Despacho" itemValue="Despacho" />
-                                        <f:selectItem itemLabel="Decisão" itemValue="Decisão" />
-                                        <f:selectItem itemLabel="Sentença" itemValue="Sentença" />
-                                    </p:selectOneMenu>  <br/></h4>
-                                <h4>Advogado: <bold/> <bold/> <bold/><p:inputText placeholder="Nome" style="width: 300px;" /> OAB: <p:inputText placeholder="OAB" style="width: 300px;" /></h4>
-                                <h4>Complemento: <p:inputText style="width: 750px; height: 140px;" /></h4>
-
+                                <table>
+                                    <tr>
+                                        <td><label>Número do processo:*:</label></td>
+                                        <td><p:inputText value="#{pedido.numeroProcesso}" placeholder="Ex: 8000111-11.2011"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Classe Processual:*:</label></td>
+                                        <td><p:inputText value="#{pedido.classe}" placeholder="Ex: Alimentos"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h:panelGrid columns="2" style="margin-bottom:0px" cellpadding="5">
+                                                <p:outputLabel for="tipo" value="Tipo de diligência*:" />
+                                                <p:selectOneMenu id="tipo" value="#{pedido.tipo}" style="width:125px">
+                                                    <f:selectItem itemLabel="Despacho" itemValue="Despacho" />
+                                                    <f:selectItem itemLabel="Decisão" itemValue="Decisão" />
+                                                    <f:selectItem itemLabel="Sentença" itemValue="Sentença" />
+                                                </p:selectOneMenu>
+                                            </h:panelGrid>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="data" value="Data de conclusão: " />
+                                            <p:inputMask id="data" value="#{pedido.data}" mask="99/99/9999"/>
+                                        </h:panelGrid>
+                                    </tr>
+                                    <tr>
+                                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                                            <h:outputText value="Prioridade?" />
+                                            <p:selectBooleanButton id="prioridade" value="#{pedido.prioridade}" onLabel="Sim" offLabel="Não" style="width:60px" />
+                                        </h:panelGrid>
+                                    </tr>
+                                    <tr>
+                                        <td>OAB vinculado*:</td>
+                                        <td><p:inputText value="#{pedido.oab}" placeholder="Ex: 99.999"/></td>                     
+                                    </tr>
+                                    <br/>
+                                    <tr>
+                                        <td>
+                                            <p:commandButton value="salvar" actionListener="#{retornoBean.salvar()}" update="@all"/>
+                                        </td>
+                                    </tr>
+                                </table>
                             </h:form>
                         </div>
                     </div>
