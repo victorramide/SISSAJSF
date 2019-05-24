@@ -5,16 +5,21 @@
  */
 package dao;
 
-import model.PedidoModel;
+import database.Pedido;
+import java.io.Serializable;
 import org.hibernate.Transaction;
 
 /**
  *
  * @author Victor Ramide
  */
-public class PedidoDAO {
+public class PedidoDAO extends GenericDAO<Pedido, Long> {
 
-    public void save(PedidoModel pedido){
+    public PedidoDAO() {
+        super(Pedido.class);
+    }
+
+    /*public void save(PedidoModel pedido){
         
         org.hibernate.Session sessao = dao.HibernateUtil.getSession();
         Transaction tx = null;
@@ -31,7 +36,7 @@ public class PedidoDAO {
         }     
     }
     
-    /*
+    
     public void create(PedidoModel p) throws SQLException{
         try{
             String sql = "insert into usuario (numeroProcesso, classe, tipo, prioridade, sentenca, oab, data) values (?, ?, ?, ?, ?, ?, ?)";
@@ -153,7 +158,5 @@ public class PedidoDAO {
         }
         return list;
     } */
-    
     //Criar um remover para os processos que transfere os dados para a tabela de excluídos e depois apaga da tabela principal.
-    
 }

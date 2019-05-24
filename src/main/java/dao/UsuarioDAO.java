@@ -5,16 +5,21 @@
  */
 package dao;
 
-import model.UsuarioModel;
+import database.Usuario;
+import java.io.Serializable;
 import org.hibernate.Transaction;
 
 /**
  *
  * @author Victor Ramide
  */
-public class UsuarioDAO {
-    
-     public void save(UsuarioModel usuario) {
+public class UsuarioDAO extends GenericDAO<Usuario, Long> {
+
+    public UsuarioDAO() {
+        super(Usuario.class);
+    }
+
+    /* public void save(UsuarioModel usuario) {
         org.hibernate.Session sessao = dao.HibernateUtil.getSession();
         Transaction tx = null;
         try {
@@ -30,7 +35,7 @@ public class UsuarioDAO {
         }
     }
     
-    /*
+    
     public void create(UsuarioModel u) throws SQLException{
         try{
             String sql = "insert into usuario (nome, email, login, senha) values (?, ?, ?, ?)";
@@ -47,5 +52,40 @@ public class UsuarioDAO {
             connection.close();
         }
     }   
-    */
+     */
+
+ /* public void save(UsuarioModel usuario) {
+        org.hibernate.Session sessao = dao.HibernateUtil.getSession();
+        Transaction tx = null;
+        try {
+            tx = sessao.beginTransaction();
+            sessao.save(usuario);
+            sessao.flush();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e;
+        }
+    }
+    
+    
+    public void create(UsuarioModel u) throws SQLException{
+        try{
+            String sql = "insert into usuario (nome, email, login, senha) values (?, ?, ?, ?)";
+            PreparedStatement insert = connection.prepareStatement(sql);
+            insert.setString(1, u.getNome());
+            insert.setString(2, u.getEmail());
+            //insert.setString(3, u.getLogin());
+            insert.setString(4, u.getSenha());
+            insert.execute();
+            connection.commit();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            connection.close();
+        }
+    }   
+     */
 }

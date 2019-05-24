@@ -6,8 +6,8 @@
 package database;
 
 import java.io.Serializable;
-import java.sql.Date;
-//import java.util.Calendar;
+//import java.sql.Date;
+import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,41 +22,47 @@ import javax.persistence.TemporalType;
  * @author victorramide
  */
 @Entity
-@Table(name="tb_pedido")
+@Table(name = "tb_pedido")
 public class Pedido implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name="id")
+    @Column(name = "id")
     private long id;
 
-    @Column(name="numeroProcesso", length = 25, nullable = false)
+    @Column(name = "numeroProcesso", length = 25, nullable = false)
     private String numeroProcesso;
-    
-    @Column(name="classe")
+
+    @Column(name = "classe")
     private String classe;
-    
-    @Column(name="tipo", length = 10, nullable = false)
+
+    @Column(name = "tipo", length = 10, nullable = false)
     private String tipo;
-    
-    @Column(name="prioridade")
+
+    @Column(name = "prioridade")
     private boolean prioridade;
-    
-    @Column (name="sentença")
+
+    @Column(name = "sentença")
     private boolean sentenca;
-    
-    @Column(name="excluido")
+
+    @Column(name = "excluido")
     private boolean excluido;
-    
-    @Column (name="justificativa")
+
+    @Column(name = "justificativa")
     private String justificativa;
-    
-    @Column(name="oab", nullable = false)
+
+    @Column(name = "oab", nullable = false)
     private String oab;
-    
-    @Column(name="data")
+
+    @Column(name = "dataConclusao")
     @Temporal(TemporalType.DATE)
-    private Date data;
+    private Calendar dataConclusao;
+
+    public Pedido() {
+        this.sentenca = false;
+        this.excluido = false;
+        this.dataConclusao = Calendar.getInstance(); //Corrigir o modelo da data.
+    }
 
     public long getId() {
         return id;
@@ -130,12 +136,11 @@ public class Pedido implements Serializable {
         this.oab = oab;
     }
 
-    public Date getData() {
-        return data;
+    public Calendar getDataConclusao() {
+        return dataConclusao;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setData(Calendar dataConclusao) {
+        this.dataConclusao = dataConclusao;
     }
-        
 }

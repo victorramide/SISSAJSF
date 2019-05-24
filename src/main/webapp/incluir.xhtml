@@ -16,18 +16,18 @@
                         <table>
                             <tr>
                                 <td><label>Número do processo:*:</label></td>
-                                <td><p:inputText value="#{pedido.numeroProcesso}" placeholder="Ex: 8000111-11.2011"/></td>
+                                <td><p:inputText value="#{pedidoBean.pedido.numeroProcesso}" placeholder="Ex: 8000111-11.2011"/></td>
                             </tr>
                             <tr>
                                 <td><label>Classe Processual:*:</label></td>
-                                <td><p:inputText value="#{pedido.classe}" placeholder="Ex: Alimentos"/></td>
+                                <td><p:inputText value="#{pedidoBean.pedido.classe}" placeholder="Ex: Alimentos"/></td>
                             </tr>
                             <tr>
                                 <td>
                                     <p:outputLabel for="tipo" value="Tipo de diligência*:" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu id="tipo" value="#{pedido.tipo}">
+                                    <p:selectOneMenu id="tipo" value="#{pedidoBean.pedido.tipo}">
                                         <f:selectItem itemLabel="Despacho" itemValue="Despacho" />
                                         <f:selectItem itemLabel="Decisão" itemValue="Decisão" />
                                         <f:selectItem itemLabel="Sentença" itemValue="Sentença" />
@@ -39,7 +39,7 @@
                                     <p:outputLabel for="data" value="Data de conclusão: " />
                                 </td>
                                 <td>
-                                    <p:inputMask id="data" value="#{pedido.data}" mask="99/99/9999"/>
+                                    <p:inputMask id="data" value="#{pedidoBean.pedido.dataConclusao}" mask="99/99/9999"/>
                                 </td>
                             </tr>
                             <tr>
@@ -47,17 +47,17 @@
                                     <h:outputText value="Prioridade?" />
                                 </td>
                                 <td>
-                                    <p:selectBooleanButton id="prioridade" value="#{pedido.prioridade}" onLabel="Sim" offLabel="Não" style="width:60px" />
+                                    <p:selectBooleanButton id="prioridade" value="#{pedidoBean.pedido.prioridade}" onLabel="Sim" offLabel="Não" style="width:60px" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>OAB vinculado*:</td>
-                                <td><p:inputText value="#{pedido.oab}" placeholder="Ex: 99.999"/></td>                     
+                                <td><p:inputText value="#{pedidoBean.pedido.oab}" placeholder="Ex: 99.999"/></td>                     
                             </tr>
                             <br/>
                             <tr>
                                 <td colspan="2">
-                                    <p:commandButton value="salvar" actionListener="#{retornoBean.salvar()}" update="@all"/>
+                                    <p:commandButton value="salvar" actionListener="#{pedidoBean.salvar}" update="@all"/>
                                 </td>
                             </tr>
                         </table>
