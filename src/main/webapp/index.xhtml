@@ -14,13 +14,11 @@
                     a realizar diligências junto à Vara Cível de Candeias.
                 </p>
                 <div class="container">
-                <center><h3>Selecione uma das opções a baixo:</h3></center><br/>
-                <form action="incluir.xhtml">
-                <button type="submit" class="btn btn-dark btn-block" >INCLUIR PROCESSO NA LISTA</button> <br/> 
-                </form>
-                <button type="button" class="btn btn-dark btn-block">LISTA DE PROCESSOS</button> <br/>
-                <button type="button" class="btn btn-dark btn-block">PROCESSOS RETIRADOS DA LISTA</button> <br/> 
-                 </div>    
+                    <center><h3>Selecione uma das opções a baixo:</h3></center><br/>
+                    <h:button styleClass="btn btn-dark btn-block" value="INCLUIR PROCESSO NA LISTA" outcome="incluir"/> <br/> 
+                    <h:button styleClass="btn btn-dark btn-block" value="LISTA DE PROCESSOS" outcome="lista_pedidos"/> <br/>
+                    <h:button styleClass="btn btn-dark btn-block" value="PROCESSOS RETIRADOS DA LISTA" outcome="lista_retirados"/> <br/> 
+                </div>    
             </div>
         </div>
     </div>

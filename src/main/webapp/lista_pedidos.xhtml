@@ -12,8 +12,8 @@
                 <br/><h1><center>Lista de Pedidos</center></h1><br/>
                 <p>
                 <br/><h2>Processos comuns</h2><br/>
-                <h:form id="formTable">
-                    <p:dataTable var="pedido1" value="#{}" id="tabela1">
+                <h:form id="formTable1">
+                    <p:dataTable var="pedido1" value="" id="tabela1">
                         <p:column headerText="Numero do Processo">
                             <h:outputText value="#{pedido.numeroProcesso}" />
                         </p:column> 
@@ -27,7 +27,7 @@
                             <h:outputText value="#{pedido.oab}" />
                         </p:column>
                         <p:column headerText="">
-                            <p:commandButton value="Excluir" actionListener="#{}" update="tabela">
+                            <p:commandButton value="Excluir"  >
                                 <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
                             </p:commandButton>
      
@@ -41,8 +41,8 @@
                 </p>
                 <p>
                 <br/><h2>Processos prioridade</h2><br/>
-                <h:form id="formTable">
-                    <p:dataTable var="pedido2" value="#{}" id="tabela2">
+                <h:form id="formTable2">
+                    <p:dataTable var="pedido2" value="" id="tabela2">
                         <p:column headerText="Numero do Processo">
                             <h:outputText value="#{pedido.numeroProcesso}" />
                         </p:column> 
@@ -56,7 +56,7 @@
                             <h:outputText value="#{pedido.oab}" />
                         </p:column>
                         <p:column headerText="">
-                            <p:commandButton value="Excluir" actionListener="#{}" update="tabela">
+                            <p:commandButton value="Excluir"  >
                                 <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
                             </p:commandButton>
      
@@ -70,8 +70,8 @@
                 </p>
                 <p>
                 <br/><h2>Processos sentenças comuns</h2><br/>
-                <h:form id="formTable">
-                    <p:dataTable var="pedido3" value="#{}" id="tabela3">
+                <h:form id="formTable3">
+                    <p:dataTable var="pedido3" value="" id="tabela3">
                         <p:column headerText="Numero do Processo">
                             <h:outputText value="#{pedido.numeroProcesso}" />
                         </p:column> 
@@ -88,7 +88,7 @@
                             <h:outputText value="#{pedido.data}" />
                         </p:column>
                         <p:column headerText="">
-                            <p:commandButton value="Excluir" actionListener="#{}" update="tabela">
+                            <p:commandButton value="Excluir"  >
                                 <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
                             </p:commandButton>
      
@@ -103,7 +103,7 @@
                 <p>
                 <br/><h2>Processos sentenças Prioridade</h2><br/>
                 <h:form id="formTable">
-                    <p:dataTable var="pedido4" value="#{}" id="tabela4">
+                    <p:dataTable var="pedido4" value="" id="tabela4">
                         <p:column headerText="Numero do Processo">
                             <h:outputText value="#{pedido.numeroProcesso}" />
                         </p:column> 
@@ -120,7 +120,7 @@
                             <h:outputText value="#{pedido.data}" />
                         </p:column>
                         <p:column headerText="">
-                            <p:commandButton value="Excluir" actionListener="#{}" update="tabela">
+                            <p:commandButton value="Excluir"  >
                                 <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
                             </p:commandButton>
      
