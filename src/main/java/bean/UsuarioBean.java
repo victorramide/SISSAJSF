@@ -31,7 +31,7 @@ public class UsuarioBean {
         usuario = new Usuario();
         usuarios = new ArrayList<>();
         usuarioDAO = new UsuarioDAO();
-        usuarios = usuarioDAO.listALL(); //Provavelmente não teremos necessidade desse método.
+        //usuarios = usuarioDAO.listALL(); //Provavelmente não teremos necessidade desse método.
     }
     
     public void salvar(){

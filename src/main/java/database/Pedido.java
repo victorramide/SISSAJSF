@@ -42,7 +42,7 @@ public class Pedido implements Serializable {
     @Column(name = "prioridade")
     private boolean prioridade;
 
-    @Column(name = "sentença")
+    @Column(name = "sentenca")
     private boolean sentenca;
 
     @Column(name = "excluido")
@@ -57,13 +57,13 @@ public class Pedido implements Serializable {
     @Column(name = "dataConclusao")
     @Temporal(TemporalType.DATE)
     private Calendar dataConclusao;
-
+    /*
     public Pedido() {
         this.sentenca = false;
         this.excluido = false;
-        this.dataConclusao = Calendar.getInstance(); //Corrigir o modelo da data.
+        this.dataConclusao; //Corrigir o modelo da data.
     }
-
+    */
     public long getId() {
         return id;
     }

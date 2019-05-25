@@ -24,14 +24,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p:outputLabel for="tipo" value="Tipo de diligência*:" />
+                                    <p:outputLabel for="tipo" value="Tipo:" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu id="tipo" value="#{pedidoBean.pedido.tipo}">
-                                        <f:selectItem itemLabel="Despacho" itemValue="Despacho" />
-                                        <f:selectItem itemLabel="Decisão" itemValue="Decisão" />
-                                        <f:selectItem itemLabel="Sentença" itemValue="Sentença" />
-                                    </p:selectOneMenu>
+                                    <p:selectOneRadio id="tipo" value="#{pedidoBean.pedido.tipo}">
+                                        <f:selectItem itemLabel="Despacho" itemValue="despacho" />
+                                        <f:selectItem itemLabel="Decisão" itemValue="decisao" />
+                                        <f:selectItem itemLabel="Sentença" itemValue="sentenca" />
+                                    </p:selectOneRadio>
                                 </td>
                             </tr>
                             <tr>

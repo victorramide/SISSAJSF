@@ -5,136 +5,108 @@
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml"
              xmlns:p="http://primefaces.org/ui">
-    
+
     <div id="lista-pedidos">
         <div class="container">
             <div class="jumbotron">
                 <br/><h1><center>Lista de Pedidos</center></h1><br/>
                 <p>
-                <br/><h2>Processos comuns</h2><br/>
-                <h:form id="formTable1">
-                    <p:dataTable var="pedido1" value="" id="tabela1">
-                        <p:column headerText="Numero do Processo">
-                            <h:outputText value="#{pedido.numeroProcesso}" />
-                        </p:column> 
-                        <p:column headerText="Classe">
-                            <h:outputText value="#{pedido.classe}" />
-                        </p:column>    
-                        <p:column headerText="Tipo">
-                            <h:outputText value="#{pedido.tipo}" />
-                        </p:column>
-                        <p:column headerText="OAB">
-                            <h:outputText value="#{pedido.oab}" />
-                        </p:column>
-                        <p:column headerText="">
-                            <p:commandButton value="Excluir"  >
-                                <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
-                            </p:commandButton>
-     
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                            </p:confirmDialog>
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
+                    <br/><h2>Processos comuns</h2><br/>
+                    <h:form id="formTable1">
+                        <p:dataTable var="pedido1" value="" id="tabela1">
+                            <p:column headerText="Numero do Processo">
+                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                            </p:column> 
+                            <p:column headerText="Classe">
+                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                            </p:column>    
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                            </p:column>
+                            <p:column headerText="OAB">
+                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                            </p:column>
+                            <p:column headerText="Remover">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela1"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
                 </p>
                 <p>
-                <br/><h2>Processos prioridade</h2><br/>
-                <h:form id="formTable2">
-                    <p:dataTable var="pedido2" value="" id="tabela2">
-                        <p:column headerText="Numero do Processo">
-                            <h:outputText value="#{pedido.numeroProcesso}" />
-                        </p:column> 
-                        <p:column headerText="Classe">
-                            <h:outputText value="#{pedido.classe}" />
-                        </p:column>    
-                        <p:column headerText="Tipo">
-                            <h:outputText value="#{pedido.tipo}" />
-                        </p:column>
-                        <p:column headerText="OAB">
-                            <h:outputText value="#{pedido.oab}" />
-                        </p:column>
-                        <p:column headerText="">
-                            <p:commandButton value="Excluir"  >
-                                <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
-                            </p:commandButton>
-     
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                            </p:confirmDialog>
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
+                    <br/><h2>Processos prioridade</h2><br/>
+                    <h:form id="formTable2">
+                        <p:dataTable var="pedido2" value="" id="tabela2">
+                            <p:column headerText="Numero do Processo">
+                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                            </p:column> 
+                            <p:column headerText="Classe">
+                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                            </p:column>    
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                            </p:column>
+                            <p:column headerText="OAB">
+                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                            </p:column>
+                            <p:column headerText="Remover">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela2"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
                 </p>
                 <p>
-                <br/><h2>Processos sentenças comuns</h2><br/>
-                <h:form id="formTable3">
-                    <p:dataTable var="pedido3" value="" id="tabela3">
-                        <p:column headerText="Numero do Processo">
-                            <h:outputText value="#{pedido.numeroProcesso}" />
-                        </p:column> 
-                        <p:column headerText="Classe">
-                            <h:outputText value="#{pedido.classe}" />
-                        </p:column>    
-                        <p:column headerText="Tipo">
-                            <h:outputText value="#{pedido.tipo}" />
-                        </p:column>
-                        <p:column headerText="OAB">
-                            <h:outputText value="#{pedido.oab}" />
-                        </p:column>
-                        <p:column headerText="Data de Conclusão">
-                            <h:outputText value="#{pedido.data}" />
-                        </p:column>
-                        <p:column headerText="">
-                            <p:commandButton value="Excluir"  >
-                                <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
-                            </p:commandButton>
-     
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                            </p:confirmDialog>
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
+                    <br/><h2>Processos sentenças comuns</h2><br/>
+                    <h:form id="formTable3">
+                        <p:dataTable var="pedido3" value="" id="tabela3">
+                            <p:column headerText="Numero do Processo">
+                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                            </p:column> 
+                            <p:column headerText="Classe">
+                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                            </p:column>    
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                            </p:column>
+                            <p:column headerText="OAB">
+                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                            </p:column>
+                            <p:column headerText="Data de Conclusão">
+                                <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
+                            </p:column>
+                            <p:column headerText="Remover">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela3"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
                 </p>
                 <p>
-                <br/><h2>Processos sentenças Prioridade</h2><br/>
-                <h:form id="formTable">
-                    <p:dataTable var="pedido4" value="" id="tabela4">
-                        <p:column headerText="Numero do Processo">
-                            <h:outputText value="#{pedido.numeroProcesso}" />
-                        </p:column> 
-                        <p:column headerText="Classe">
-                            <h:outputText value="#{pedido.classe}" />
-                        </p:column>    
-                        <p:column headerText="Tipo">
-                            <h:outputText value="#{pedido.tipo}" />
-                        </p:column>
-                        <p:column headerText="OAB">
-                            <h:outputText value="#{pedido.oab}" />
-                        </p:column>
-                        <p:column headerText="Data de Conclusão">
-                            <h:outputText value="#{pedido.data}" />
-                        </p:column>
-                        <p:column headerText="">
-                            <p:commandButton value="Excluir"  >
-                                <p:confirm header="Confirmation" message="Tem certeza que deseja excluir?" icon="pi pi-exclamation-triangle" />
-                            </p:commandButton>
-     
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                            </p:confirmDialog>
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
+                    <br/><h2>Processos sentenças Prioridade</h2><br/>
+                    <h:form id="formTable">
+                        <p:dataTable var="pedido4" value="" id="tabela4">
+                            <p:column headerText="Numero do Processo">
+                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                            </p:column> 
+                            <p:column headerText="Classe">
+                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                            </p:column>    
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                            </p:column>
+                            <p:column headerText="OAB">
+                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                            </p:column>
+                            <p:column headerText="Data de Conclusão">
+                                <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
+                            </p:column>
+                            <p:column headerText="Remover">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela4"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
                 </p>
             </div>
         </div>
     </div>
-    
+
 </ui:decorate>
 

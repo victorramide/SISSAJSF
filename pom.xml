@@ -31,14 +31,6 @@
     </repositories>
     
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.glassfish.main.featuresets/glassfish -->
-        <dependency>
-            <groupId>org.glassfish.main.featuresets</groupId>
-            <artifactId>glassfish</artifactId>
-            <version>4.1.1</version>
-            <type>pom</type>
-        </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>

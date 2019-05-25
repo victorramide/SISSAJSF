@@ -30,7 +30,7 @@ public class PedidoBean {
         pedido = new Pedido();
         pedidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
-        pedidos = pedidoDAO.listALL(); //Provavelmente não teremos necessidade desse método.
+        //pedidos = pedidoDAO.listALL(); Provavelmente não teremos necessidade desse método.
     }
     
     public void salvar(){
