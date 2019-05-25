@@ -35,7 +35,8 @@ public class PedidoBean{
     }
     
     public void salvar(){
-        
+        pedidoDAO.save(pedido);
+        pedido = new Pedido();
     }
     
     public void editar(){

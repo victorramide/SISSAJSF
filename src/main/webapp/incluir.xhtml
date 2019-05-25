@@ -36,10 +36,13 @@
                             </tr>
                             <tr>
                                 <td>    
-                                    <p:outputLabel for="data" value="Data de conclusão: " />
+                                    <h:outputLabel value="Data de conclusão(dd/mm/aaaa):" />
                                 </td>
                                 <td>
-                                    <p:inputMask id="data" value="#{pedidoBean.pedido.dataConclusao}" mask="99/99/9999"/>
+                                    <p:calendar value="#{pedidoBean.pedido.dataConclusao}" locale="pt_BR"
+                                                id="dataCadastro" showButtonPanel="true" >
+                                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                    </p:calendar>
                                 </td>
                             </tr>
                             <tr>

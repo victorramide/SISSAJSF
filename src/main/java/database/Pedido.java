@@ -7,7 +7,8 @@ package database;
 
 import java.io.Serializable;
 //import java.sql.Date;
-import java.util.Calendar;
+//import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,9 +43,6 @@ public class Pedido implements Serializable {
     @Column(name = "prioridade")
     private boolean prioridade;
 
-    @Column(name = "sentenca")
-    private boolean sentenca;
-
     @Column(name = "excluido")
     private boolean excluido;
 
@@ -56,14 +54,8 @@ public class Pedido implements Serializable {
 
     @Column(name = "dataConclusao")
     @Temporal(TemporalType.DATE)
-    private Calendar dataConclusao;
-    /*
-    public Pedido() {
-        this.sentenca = false;
-        this.excluido = false;
-        this.dataConclusao; //Corrigir o modelo da data.
-    }
-    */
+    private Date dataConclusao;
+
     public long getId() {
         return id;
     }
@@ -104,14 +96,6 @@ public class Pedido implements Serializable {
         this.prioridade = prioridade;
     }
 
-    public boolean isSentenca() {
-        return sentenca;
-    }
-
-    public void setSentenca(boolean sentenca) {
-        this.sentenca = sentenca;
-    }
-
     public boolean isExcluido() {
         return excluido;
     }
@@ -136,11 +120,11 @@ public class Pedido implements Serializable {
         this.oab = oab;
     }
 
-    public Calendar getDataConclusao() {
+    public Date getDataConclusao() {
         return dataConclusao;
     }
 
-    public void setData(Calendar dataConclusao) {
+    public void setDataConclusao(Date dataConclusao) {
         this.dataConclusao = dataConclusao;
     }
 }
