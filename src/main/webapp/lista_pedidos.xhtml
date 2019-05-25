@@ -26,8 +26,8 @@
                             <p:column headerText="OAB">
                                 <h:outputText value="#{pedidoBean.pedido.oab}" />
                             </p:column>
-                            <p:column headerText="Remover">
-                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela1" rendered="#{usuarioBean.usuario.logado == true}"/>
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela1"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -48,8 +48,8 @@
                             <p:column headerText="OAB">
                                 <h:outputText value="#{pedidoBean.pedido.oab}" />
                             </p:column>
-                            <p:column headerText="Remover">
-                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela2" rendered="#{usuarioBean.usuario.logado == true}"/>
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela2"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -73,8 +73,8 @@
                             <p:column headerText="Data de Conclusão">
                                 <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
                             </p:column>
-                            <p:column headerText="Remover">
-                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela3" rendered="#{usuarioBean.usuario.logado == true}"/>
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela3"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -98,8 +98,8 @@
                             <p:column headerText="Data de Conclusão">
                                 <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
                             </p:column>
-                            <p:column headerText="Remover">
-                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela4" rendered="#{usuarioBean.usuario.logado == true}"/>
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela4" />
                             </p:column>
                         </p:dataTable>
                     </h:form>

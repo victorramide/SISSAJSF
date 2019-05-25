@@ -28,8 +28,8 @@
                         <p:column headerText="Justificativa">
                             <h:outputText value="#{pedidoBean.pedido.justificativa}" />
                         </p:column>
-                            <p:column headerText="Remover">
-                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela5" rendered="#{usuarioBean.usuario.logado == true}"/>
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela5"/>
                             </p:column>
                     </p:dataTable>
                 </h:form>
