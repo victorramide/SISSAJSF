@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -19,7 +20,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ViewScoped
 @ManagedBean
-public class PedidoBean {
+public class PedidoBean{
 
     private Pedido pedido;
     private List<Pedido> pedidos;
@@ -30,7 +31,7 @@ public class PedidoBean {
         pedido = new Pedido();
         pedidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
-        //pedidos = pedidoDAO.listALL(); Provavelmente não teremos necessidade desse método.
+        //pedidos = pedidoDAO.listALL(); //Provavelmente não teremos necessidade desse método.
     }
     
     public void salvar(){
