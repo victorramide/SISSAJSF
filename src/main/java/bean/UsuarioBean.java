@@ -11,7 +11,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -19,7 +19,7 @@ import javax.faces.context.FacesContext;
  *
  * @author AlunoTI
  */
-@ViewScoped
+@SessionScoped
 @ManagedBean
 public class UsuarioBean implements Serializable {
 
@@ -34,6 +34,7 @@ public class UsuarioBean implements Serializable {
             return null;
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário logado com Sucesso!", "Sucesso!"));
+            usuario.setLogado(true);
             return "/faces/index.xhtml";
         }
 

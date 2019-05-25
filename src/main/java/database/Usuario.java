@@ -38,7 +38,8 @@ public class Usuario implements Serializable {
 
     @Column(name = "senha", nullable = false)
     private String senha;
-
+    
+    private boolean logado;
     public Usuario() {
     }
 
@@ -80,5 +81,13 @@ public class Usuario implements Serializable {
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
+    }
+
+    public boolean isLogado() {
+        return logado;
+    }
+
+    public void setLogado(boolean logado) {
+        this.logado = logado;
     }
 }
