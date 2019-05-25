@@ -29,13 +29,15 @@
                             <table border="0">                       
                                 <tbody>
                                     <tr>
-                                        <td><p:inputText styleClass="form-control" placeholder="Usuário"/></td>
+                                        <td><p:inputText styleClass="form-control" placeholder="Usuário" value="#{usuarioBean.usuario.nomeUsuario}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><p:inputText styleClass="form-control" placeholder="Senha"/></td>                               
+                                        <td><p:password styleClass="form-control" placeholder="Senha" value="#{usuarioBean.usuario.senha}"/></td>                               
                                     </tr>
                                     <tr>
-                                        <td><h:commandButton styleClass="btn btn-secondary" value="Entrar"/></td>
+                                        <td>
+                                            <h:commandButton styleClass="btn btn-secondary" value="Entrar" action="#{usuarioBean.login}"/>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>         

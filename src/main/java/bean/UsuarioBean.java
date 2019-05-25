@@ -7,45 +7,37 @@ package bean;
 
 import dao.UsuarioDAO;
 import database.Usuario;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-//import javax.faces.bean.ViewScoped;
+//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author AlunoTI
  */
-@SessionScoped
+@ViewScoped
 @ManagedBean
-public class UsuarioBean {
-    
-    private Usuario usuario;
-    private List<Usuario> usuarios;
-    private UsuarioDAO usuarioDAO;
-    
-     @PostConstruct
-    public void Init() {
-        usuario = new Usuario();
-        usuarios = new ArrayList<>();
-        usuarioDAO = new UsuarioDAO();
-        //usuarios = usuarioDAO.listALL(); //Provavelmente não teremos necessidade desse método.
-    }
-    
-    public void salvar(){
-        
-    }
-    
-    public void editar(){
-        
-    }
-    
-    public void excluir(){
-        
-    }
+public class UsuarioBean implements Serializable {
 
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private Usuario usuario = new Usuario();
+
+    public String login() {
+        usuario = usuarioDAO.getUsuario(usuario.getNomeUsuario(), usuario.getSenha());
+        if (usuario == null) {
+            usuario = new Usuario();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!", "Erro no Login!"));
+            return null;
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário logado com Sucesso!", "Sucesso!"));
+            return "/faces/index.xhtml";
+        }
+
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -54,24 +46,4 @@ public class UsuarioBean {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public UsuarioDAO getUsuarioDAO() {
-        return usuarioDAO;
-    }
-
-    public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
-    }
-    
-    
-    
-    
 }

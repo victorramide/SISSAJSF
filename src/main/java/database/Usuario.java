@@ -13,30 +13,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 /**
  *
  * @author victorramide
  */
 @Entity
-@Table(name="tb_usuario")
+@Table(name = "tb_usuario")
 public class Usuario implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name="id")
+    @Column(name = "id")
     private long id;
-    
-    @Column(name="nome", length = 80)
+
+    @Column(name = "nome", length = 80)
     private String nome;
-    
-    @Column(name="usuario", length = 80, nullable = false, unique = true)
-    private String usuario;
-    
-    @Column(name="email", nullable = false)
+
+    @Column(name = "nomeUsuario", length = 80, nullable = false, unique = true)
+    private String nomeUsuario;
+
+    @Column(name = "email", nullable = false)
     private String email;
-    
-    @Column(name="senha", nullable = false)
+
+    @Column(name = "senha", nullable = false)
     private String senha;
+
+    public Usuario() {
+    }
 
     public long getId() {
         return id;
@@ -54,14 +58,6 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -77,5 +73,12 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
 }
