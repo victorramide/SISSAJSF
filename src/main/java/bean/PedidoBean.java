@@ -44,19 +44,12 @@ public class PedidoBean{
 
     public void salvar() {
         pedidoDAO.save(pedido);
-        
-        /*if (p != null) {
-            pedido = p;
-            processosComum = pedidoDAO.listALL();
-            if (!p.getTipo().equals("sentenca") && p.isPrioridade() == false) {
-              processosComum = pedidoDAO.processoComum();
-          }
-        }*/
         pedido = new Pedido();
     }
     
     public List<Pedido> getpComum(){
         processosComum = pedidoDAO.processoComum();
+        System.out.println(processosComum.get(0).getNumeroProcesso());
         return processosComum;
     }
 

@@ -4,7 +4,8 @@
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml"
-             xmlns:p="http://primefaces.org/ui">
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <div id="lista-pedidos">
         <div class="container">
@@ -12,33 +13,38 @@
                 <br/><h1><center>Lista de pedidos excluídos da lista</center></h1><br/>
                 <p>
                     <h:form id="formTable">
-                        <ol>
-                            <p:dataTable var="excluido" value="" id="tabela5">
-                                <p:column headerText="">
-                                    <li></li>
-                                </p:column> 
-                                <p:column headerText="Numero do Processo">
-                                    <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
-                                </p:column> 
-                                <p:column headerText="Classe">
-                                    <h:outputText value="#{pedidoBean.pedido.classe}" />
-                                </p:column>    
-                                <p:column headerText="Tipo">
-                                    <h:outputText value="#{pedidoBean.pedido.tipo}" />
-                                </p:column>
-                                <p:column headerText="OAB">
-                                    <h:outputText value="#{pedidoBean.pedido.oab}" />
-                                </p:column>
-                                <p:column headerText="Justificativa">
-                                    <h:outputText value="#{pedidoBean.pedido.justificativa}" />
-                                </p:column>
-                                <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela5"/>
-                                </p:column>
-                            </p:dataTable>
-                        </ol>
+                        <p:dataTable var="excluido" value="" id="tabela5">
+                            <p:column headerText="Numero do Processo">
+                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                            </p:column> 
+                            <p:column headerText="Classe">
+                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                            </p:column>    
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                            </p:column>
+                            <p:column headerText="OAB">
+                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                            </p:column>
+                            <p:column headerText="Justificativa">
+                                <h:outputText value="#{pedidoBean.pedido.justificativa}" />
+                            </p:column>
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela5"/>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
                 </p>
+                <h:form id="fomTable10">
+                    <h:dataTable var="pedido" value="#{pedidoBean.getpComum()}" id="tabela">
+                        <h:column > 
+                            <f:facet name="header"> 
+                                <h:outputText value="Codigo" /> 
+                            </f:facet> 
+                            <h:outputText value="#{pedido.numeroProcesso}"/> 
+                        </h:column> 
+                    </h:dataTable>
+                </h:form>
             </div>
         </div>
     </div>

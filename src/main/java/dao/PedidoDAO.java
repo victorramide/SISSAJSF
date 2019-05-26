@@ -25,13 +25,11 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
     }
 
     public List<Pedido> processoComum() {
-        List<Pedido> result = new ArrayList<>();
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(Pedido.class);
         criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
         criteria.add(Restrictions.eq("prioridade", false));
-        result = criteria.list();
-        return result;
+        return criteria.list();
     }
 
     /*public void save(PedidoModel pedido){
