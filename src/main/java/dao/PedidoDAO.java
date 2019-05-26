@@ -7,7 +7,12 @@ package dao;
 
 import database.Pedido;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -17,6 +22,16 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
 
     public PedidoDAO() {
         super(Pedido.class);
+    }
+
+    public List<Pedido> processoComum() {
+        List<Pedido> result = new ArrayList<>();
+        Session sessao = dao.HibernateUtil.getSession();
+        Criteria criteria = sessao.createCriteria(Pedido.class);
+        criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
+        criteria.add(Restrictions.eq("prioridade", false));
+        result = criteria.list();
+        return result;
     }
 
     /*public void save(PedidoModel pedido){

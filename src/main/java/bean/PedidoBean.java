@@ -22,29 +22,50 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 public class PedidoBean{
 
-    private Pedido pedido;
-    private List<Pedido> pedidos;
+     private Pedido pedido;
+    private List<Pedido> processosComum;
+    private List<Pedido> processosPrioridade;
+    private List<Pedido> sentencasComum;
+    private List<Pedido> sentencasPrioridade;
+    private List<Pedido> pedidosExcluidos;
     private PedidoDAO pedidoDAO;
 
     @PostConstruct
     public void Init() {
         pedido = new Pedido();
-        pedidos = new ArrayList<>();
+        processosComum = new ArrayList<>();
+        processosPrioridade = new ArrayList<>();
+        sentencasComum = new ArrayList<>();
+        sentencasPrioridade = new ArrayList<>();
+        pedidosExcluidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
         //pedidos = pedidoDAO.listALL(); //Provavelmente não teremos necessidade desse método.
     }
-    
-    public void salvar(){
+
+    public void salvar() {
         pedidoDAO.save(pedido);
+        
+        /*if (p != null) {
+            pedido = p;
+            processosComum = pedidoDAO.listALL();
+            if (!p.getTipo().equals("sentenca") && p.isPrioridade() == false) {
+              processosComum = pedidoDAO.processoComum();
+          }
+        }*/
         pedido = new Pedido();
     }
     
-    public void editar(){
-        
+    public List<Pedido> getpComum(){
+        processosComum = pedidoDAO.processoComum();
+        return processosComum;
     }
-    
-    public void excluir(){
-        
+
+    public void editar() {
+
+    }
+
+    public void excluir() {
+
     }
 
     public Pedido getPedido() {
@@ -55,12 +76,44 @@ public class PedidoBean{
         this.pedido = pedido;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
+    public List<Pedido> getProcessosComum() {
+        return processosComum;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setProcessosComum(List<Pedido> processosComum) {
+        this.processosComum = processosComum;
+    }
+
+    public List<Pedido> getProcessosPrioridade() {
+        return processosPrioridade;
+    }
+
+    public void setProcessosPrioridade(List<Pedido> processosPrioridade) {
+        this.processosPrioridade = processosPrioridade;
+    }
+
+    public List<Pedido> getSentencasComum() {
+        return sentencasComum;
+    }
+
+    public void setSentencasComum(List<Pedido> sentencasComum) {
+        this.sentencasComum = sentencasComum;
+    }
+
+    public List<Pedido> getSentencasPrioridade() {
+        return sentencasPrioridade;
+    }
+
+    public void setSentencasPrioridade(List<Pedido> sentencasPrioridade) {
+        this.sentencasPrioridade = sentencasPrioridade;
+    }
+
+    public List<Pedido> getPedidosExcluidos() {
+        return pedidosExcluidos;
+    }
+
+    public void setPedidosExcluidos(List<Pedido> pedidosExcluidos) {
+        this.pedidosExcluidos = pedidosExcluidos;
     }
 
     public PedidoDAO getPedidoDAO() {

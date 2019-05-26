@@ -36,11 +36,11 @@
                             </tr>
                             <tr>
                                 <td>    
-                                    <h:outputLabel value="Data de conclusão(dd/mm/aaaa):" />
+                                    <h:outputLabel value="Data de conclusão:" />
                                 </td>
                                 <td>
                                     <p:calendar value="#{pedidoBean.pedido.dataConclusao}" locale="pt_BR"
-                                                id="dataCadastro" showButtonPanel="true" >
+                                                id="dataCadastro" showButtonPanel="true" placeholder="Ex: 11/11/2011" >
                                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
                                     </p:calendar>
                                 </td>

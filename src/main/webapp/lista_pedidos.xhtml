@@ -15,7 +15,7 @@
                 <p>
                     <br/><h2>Processos comuns</h2><br/>
                     <h:form id="formTable1">
-                        <p:dataTable var="pedido1" value="" id="tabela1">
+                        <p:dataTable var="pedido1" value="#{pedidoBean.getpComum()}" id="tabela1">
                             <p:column headerText="Numero do Processo">
                                 <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
                             </p:column> 
@@ -29,9 +29,9 @@
                                 <h:outputText value="#{pedidoBean.pedido.oab}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center><p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
                                     <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                </p:commandButton>
+                                </p:commandButton></center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -53,9 +53,9 @@
                                 <h:outputText value="#{pedidoBean.pedido.oab}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center><p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
                                     <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                </p:commandButton>
+                                    </p:commandButton></center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -80,9 +80,9 @@
                                 <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center> <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
                                     <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                </p:commandButton>                            
+                                    </p:commandButton></center>                            
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -107,9 +107,9 @@
                                 <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center> <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
                                     <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                </p:commandButton>
+                                    </p:commandButton></center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -124,7 +124,7 @@
             <table>
                 <tr>
                     <td><label>Justificativa para Remoção:*:</label></td>
-                    <td><p:inputText value="#{pedidoBean.pedido.justificativa}" </td>
+                    <td><p:inputText value="#{pedidoBean.pedido.justificativa}" /></td>
                 </tr>
                 <tr>
                     <td>
