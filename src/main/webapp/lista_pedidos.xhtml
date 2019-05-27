@@ -29,7 +29,7 @@
                                 <center>  <h:outputText value="#{pedido1.oab}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center><p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center><p:commandButton actionListener="#{pedidoBean.deletePComum(pedido1.id)}" value="Excluir" oncomplete="PF('justificativa').show()" update="@all">
                                         <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
                                     </p:commandButton></center>
                             </p:column>
@@ -39,7 +39,7 @@
                 <p>
                     <br/><h2>Processos prioridade</h2><br/>
                     <h:form id="formTable2">
-                        <p:dataTable var="pedido2" value="" id="tabela2">
+                        <p:dataTable var="pedido2" value="#{pedidoBean.getpPrioridade()}" id="tabela2">
                             <p:column headerText="Numero do Processo">
                                 <h:outputText value="#{pedido2.numeroProcesso}" />
                             </p:column> 
@@ -53,7 +53,7 @@
                                 <h:outputText value="#{pedido2.oab}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center><p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center><p:commandButton actionListener="#{pedidoBean.deletePPrioridade(pedido2.id)}" value="Excluir" oncomplete="PF('justificativa').show()" update="@all">
                                         <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
                                     </p:commandButton></center>
                             </p:column>
@@ -63,7 +63,7 @@
                 <p>
                     <br/><h2>Processos sentenças comuns</h2><br/>
                     <h:form id="formTable3">
-                        <p:dataTable var="pedido3" value="" id="tabela3">
+                        <p:dataTable var="pedido3" value="#{pedidoBean.getsComum()}" id="tabela3">
                             <p:column headerText="Numero do Processo">
                                 <h:outputText value="#{pedido3.numeroProcesso}" />
                             </p:column> 
@@ -80,7 +80,7 @@
                                 <h:outputText value="#{pedido3.dataConclusao}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center> <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center> <p:commandButton  actionListener="#{pedidoBean.deleteSComum(pedido3.id)}" value="Excluir" oncomplete="PF('justificativa').show()"  update="@all">
                                         <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
                                     </p:commandButton></center>                            
                             </p:column>
@@ -90,7 +90,7 @@
                 <p>
                     <br/><h2>Processos sentenças Prioridade</h2><br/>
                     <h:form id="formTable">
-                        <p:dataTable var="pedido4" value="" id="tabela4">
+                        <p:dataTable var="pedido4" value="#{pedidoBean.getsPrioridade()}" id="tabela4">
                             <p:column headerText="Numero do Processo">
                                 <h:outputText value="#{pedido4.numeroProcesso}" />
                             </p:column> 
@@ -107,7 +107,7 @@
                                 <h:outputText value="#{pedido4.dataConclusao}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center> <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
+                                <center> <p:commandButton actionListener="#{pedidoBean.deleteSPrioridade(pedido4.id)}" value="Excluir" oncomplete="PF('justificativa').show()" update="@all">
                                         <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
                                     </p:commandButton></center>
                             </p:column>

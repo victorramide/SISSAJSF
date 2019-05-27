@@ -42,6 +42,25 @@ public abstract class GenericDAO<T, Type extends Serializable> {
         return retorno;
     }
     
+       public T delete(Long id) {
+        org.hibernate.Session session = dao.HibernateUtil.getSession();
+        Transaction tx = null;
+        
+        T retorno = null;
+        
+        try {
+            tx = session.beginTransaction();
+            retorno = (T) session.get(persistenceClass, id);
+            session.delete(retorno);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        
+       return retorno;
+    }
+
+    
     public List<T> listALL(){
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(persistenceClass);

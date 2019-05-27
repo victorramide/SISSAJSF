@@ -32,6 +32,30 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         return criteria.list();
     }
 
+    public List<Pedido> processoPrioridade() {
+        Session sessao = dao.HibernateUtil.getSession();
+        Criteria criteria = sessao.createCriteria(Pedido.class);
+        criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
+        criteria.add(Restrictions.eq("prioridade", true));
+        return criteria.list();
+    }
+
+    public List<Pedido> sentencaComum() {
+        Session sessao = dao.HibernateUtil.getSession();
+        Criteria criteria = sessao.createCriteria(Pedido.class);
+        criteria.add(Restrictions.eq("tipo", "sentenca"));
+        criteria.add(Restrictions.eq("prioridade", false));
+        return criteria.list();
+    }
+
+    public List<Pedido> sentencaPrioridade() {
+        Session sessao = dao.HibernateUtil.getSession();
+        Criteria criteria = sessao.createCriteria(Pedido.class);
+        criteria.add(Restrictions.eq("tipo", "sentenca"));
+        criteria.add(Restrictions.eq("prioridade", true));
+        return criteria.list();
+    }
+
     /*public void save(PedidoModel pedido){
         
         org.hibernate.Session sessao = dao.HibernateUtil.getSession();

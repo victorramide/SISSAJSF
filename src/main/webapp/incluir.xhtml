@@ -15,12 +15,23 @@
                     <h:form id="Incluir">
                         <table>
                             <tr>
-                                <td><label>Número do processo:*:</label></td>
-                                <td><p:inputText value="#{pedidoBean.pedido.numeroProcesso}" placeholder="Ex: 8000111-11.2011"/></td>
+                                <td><label>Número do processo:*:</label></td><br/>
+                                <td><p:inputText value="#{pedidoBean.pedido.numeroProcesso}" placeholder="Ex: 8000111-11.2011" style="width: 300px;"/></td>
                             </tr>
                             <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                            </tr>
+                            <tr>
+                            
                                 <td><label>Classe Processual:*:</label></td>
-                                <td><p:inputText value="#{pedidoBean.pedido.classe}" placeholder="Ex: Alimentos"/></td>
+                                <td><p:inputText value="#{pedidoBean.pedido.classe}" placeholder="Ex: Alimentos" style="width: 300px;"/></td>
+                            </tr>
+                               <tr>
+                                <td>
+                                    <br/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -28,10 +39,15 @@
                                 </td>
                                 <td>
                                     <p:selectOneRadio id="tipo" value="#{pedidoBean.pedido.tipo}">
-                                        <f:selectItem itemLabel="Despacho" itemValue="despacho" />
-                                        <f:selectItem itemLabel="Decisão" itemValue="decisao" />
+                                        <f:selectItem itemLabel="Despacho" itemValue="despacho" /><bold/>
+                                        <f:selectItem itemLabel="Decisão" itemValue="decisao" /><p/>
                                         <f:selectItem itemLabel="Sentença" itemValue="sentenca" />
                                     </p:selectOneRadio>
+                                </td>
+                            </tr>
+                               <tr>
+                                <td>
+                                    <br/>
                                 </td>
                             </tr>
                             <tr>
@@ -40,9 +56,14 @@
                                 </td>
                                 <td>
                                     <p:calendar value="#{pedidoBean.pedido.dataConclusao}" locale="pt_BR"
-                                                id="dataCadastro" showButtonPanel="true" placeholder="Ex: 11/11/2011" >
+                                                id="dataCadastro" showButtonPanel="true" placeholder="Ex: 11/11/2011" style="width: 300px;" >
                                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
                                     </p:calendar>
+                                </td>
+                            </tr>
+                               <tr>
+                                <td>
+                                    <br/>
                                 </td>
                             </tr>
                             <tr>
@@ -50,17 +71,26 @@
                                     <h:outputText value="Prioridade?" />
                                 </td>
                                 <td>
-                                    <p:selectBooleanButton id="prioridade" value="#{pedidoBean.pedido.prioridade}" onLabel="Sim" offLabel="Não" style="width:60px" />
+                                    <p:selectBooleanButton id="prioridade" value="#{pedidoBean.pedido.prioridade}" onLabel="Sim" offLabel="Não" style="width:100px" />
+                                </td>
+                            </tr>
+                               <tr>
+                                <td>
+                                    <br/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>OAB vinculado(sem ponto)*:</td>
-                                <td><p:inputText value="#{pedidoBean.pedido.oab}" placeholder="Ex: 99999"/></td>                     
+                                <td><p:inputText value="#{pedidoBean.pedido.oab}" placeholder="Ex: 99999" style="width: 300px;"/></td>                     
                             </tr>
-                            <br/>
+                             <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                            </tr>
                             <tr>
                                 <td colspan="2">
-                                    <p:commandButton value="salvar" actionListener="#{pedidoBean.salvar}" update="@all"/>
+                                    <p:commandButton value="Salvar" actionListener="#{pedidoBean.salvar}" update="@all" style="width: 100px;"/>
                                 </td>
                             </tr>
                         </table>

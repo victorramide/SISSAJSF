@@ -20,9 +20,9 @@ import javax.faces.bean.ViewScoped;
  */
 @ViewScoped
 @ManagedBean
-public class PedidoBean{
+public class PedidoBean {
 
-     private Pedido pedido;
+    private Pedido pedido;
     private List<Pedido> processosComum;
     private List<Pedido> processosPrioridade;
     private List<Pedido> sentencasComum;
@@ -39,18 +39,64 @@ public class PedidoBean{
         sentencasPrioridade = new ArrayList<>();
         pedidosExcluidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
-        //pedidos = pedidoDAO.listALL(); //Provavelmente não teremos necessidade desse método.
+        //  pedidos = pedidoDAO.listALL(); //Provavelmente não teremos necessidade desse método.
     }
 
     public void salvar() {
         pedidoDAO.save(pedido);
         pedido = new Pedido();
     }
-    
-    public List<Pedido> getpComum(){
+
+    public void deletePComum(Long id) {
+        Pedido p = pedidoDAO.delete(id);
+        if (p != null) {
+            pedido = p;
+            processosComum = pedidoDAO.processoComum();
+        }
+    }
+
+    public void deletePPrioridade(Long id) {
+        Pedido p = pedidoDAO.delete(id);
+        if (p != null) {
+            pedido = p;
+            processosPrioridade = pedidoDAO.processoPrioridade();
+        }
+    }
+
+    public void deleteSComum(Long id) {
+        Pedido p = pedidoDAO.delete(id);
+        if (p != null) {
+            pedido = p;
+            sentencasComum = pedidoDAO.sentencaComum();
+        }
+    }
+
+    public void deleteSPrioridade(Long id) {
+        Pedido p = pedidoDAO.delete(id);
+        if (p != null) {
+            pedido = p;
+            sentencasPrioridade = pedidoDAO.sentencaPrioridade();
+        }
+    }
+
+    public List<Pedido> getpComum() {
         processosComum = pedidoDAO.processoComum();
-        System.out.println(processosComum.get(0).getNumeroProcesso());
         return processosComum;
+    }
+
+    public List<Pedido> getpPrioridade() {
+        processosPrioridade = pedidoDAO.processoPrioridade();
+        return processosPrioridade;
+    }
+
+    public List<Pedido> getsComum() {
+        sentencasComum = pedidoDAO.sentencaComum();
+        return sentencasComum;
+    }
+
+    public List<Pedido> getsPrioridade() {
+        sentencasPrioridade = pedidoDAO.sentencaPrioridade();
+        return sentencasPrioridade;
     }
 
     public void editar() {
