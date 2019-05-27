@@ -17,16 +17,16 @@
                     <h:form id="formTable1">
                         <p:dataTable var="pedido1" value="#{pedidoBean.getpComum()}" id="tabela1">
                             <p:column headerText="Numero do Processo">
-                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                                <center> <h:outputText value="#{pedido1.numeroProcesso}" /></center>
                             </p:column> 
                             <p:column headerText="Classe">
-                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                                <center> <h:outputText value="#{pedido1.classe}" /></center>
                             </p:column>    
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                                <center><h:outputText value="#{pedido1.tipo}" /></center>
                             </p:column>
                             <p:column headerText="OAB">
-                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                                <center>  <h:outputText value="#{pedido1.oab}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center><p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
@@ -41,16 +41,16 @@
                     <h:form id="formTable2">
                         <p:dataTable var="pedido2" value="" id="tabela2">
                             <p:column headerText="Numero do Processo">
-                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                                <h:outputText value="#{pedido2.numeroProcesso}" />
                             </p:column> 
                             <p:column headerText="Classe">
-                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                                <h:outputText value="#{pedido2.classe}" />
                             </p:column>    
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                                <h:outputText value="#{pedido2.tipo}" />
                             </p:column>
                             <p:column headerText="OAB">
-                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                                <h:outputText value="#{pedido2.oab}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center><p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
@@ -65,19 +65,19 @@
                     <h:form id="formTable3">
                         <p:dataTable var="pedido3" value="" id="tabela3">
                             <p:column headerText="Numero do Processo">
-                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                                <h:outputText value="#{pedido3.numeroProcesso}" />
                             </p:column> 
                             <p:column headerText="Classe">
-                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                                <h:outputText value="#{pedido3.classe}" />
                             </p:column>    
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                                <h:outputText value="#{pedido3.tipo}" />
                             </p:column>
                             <p:column headerText="OAB">
-                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                                <h:outputText value="#{pedido3.oab}" />
                             </p:column>
                             <p:column headerText="Data de Conclusão">
-                                <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
+                                <h:outputText value="#{pedido3.dataConclusao}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center> <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">
@@ -92,19 +92,19 @@
                     <h:form id="formTable">
                         <p:dataTable var="pedido4" value="" id="tabela4">
                             <p:column headerText="Numero do Processo">
-                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                                <h:outputText value="#{pedido4.numeroProcesso}" />
                             </p:column> 
                             <p:column headerText="Classe">
-                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                                <h:outputText value="#{pedido4.classe}" />
                             </p:column>    
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                                <h:outputText value="#{pedido4.tipo}" />
                             </p:column>
                             <p:column headerText="OAB">
-                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                                <h:outputText value="#{pedido4.oab}" />
                             </p:column>
                             <p:column headerText="Data de Conclusão">
-                                <h:outputText value="#{pedidoBean.pedido.dataConclusao}" />
+                                <h:outputText value="#{pedido4.dataConclusao}" />
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center> <p:commandButton value="excluir" oncomplete="PF('justificativa').show()" process="@this" update=":dialog_justif">

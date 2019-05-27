@@ -15,16 +15,16 @@
                     <h:form id="formTable">
                         <p:dataTable var="excluido" value="" id="tabela5">
                             <p:column headerText="Numero do Processo">
-                                <h:outputText value="#{pedidoBean.pedido.numeroProcesso}" />
+                                <h:outputText value="#{excluido.numeroProcesso}" />
                             </p:column> 
                             <p:column headerText="Classe">
-                                <h:outputText value="#{pedidoBean.pedido.classe}" />
+                                <h:outputText value="#{excluido.classe}" />
                             </p:column>    
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{pedidoBean.pedido.tipo}" />
+                                <h:outputText value="#{excluido.tipo}" />
                             </p:column>
                             <p:column headerText="OAB">
-                                <h:outputText value="#{pedidoBean.pedido.oab}" />
+                                <h:outputText value="#{excluido.oab}" />
                             </p:column>
                             <p:column headerText="Justificativa">
                                 <h:outputText value="#{pedidoBean.pedido.justificativa}" />
