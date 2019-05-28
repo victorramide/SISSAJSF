@@ -89,8 +89,8 @@ public class PedidoBean {
     }
 */
 
-    public void mListaExcluido(Long id){
-        pedidoDAO.listExcluido(id);
+    public void mListaExcluido(Long id, String justific){
+        pedidoDAO.listExcluido(id, justific);
     }
     
     public List<Pedido> getpComum() {

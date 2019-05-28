@@ -76,13 +76,14 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         return criteria.list();
     }
 
-    public Pedido listExcluido(Long id) {
+    public Pedido listExcluido(Long id, String justific) {
         Pedido retorno = null;
         org.hibernate.Session session = dao.HibernateUtil.getSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             retorno = (Pedido) session.get(Pedido.class, id);
+            retorno.setJustificativa(justific);
             retorno.setExcluido(true);
             session.update(retorno);
             tx.commit();
