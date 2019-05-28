@@ -25,16 +25,36 @@
                         <h1>SISSA</h1>
                         <h3>Sistema de Suporte ao Advogado</h3>
                     </div>
+                    <!--
                     <div class="col-md-4">
                         <c:choose>
-                            <c:when test="#{usuarioBean.usuario.logado == true}" >
+                            <c:when test="" >
                                 <ui:include src="usuario.xhtml"/>
                             </c:when>
                             <c:otherwise>
                                 <ui:include src="form_login.xhtml"/>  
                             </c:otherwise>
                         </c:choose> 
-                    </div>
+                    </div> -->
+
+                    <h:form id="form-login">
+                        <table border="0">                       
+                            <tbody>
+                                <tr>
+                                    <td><p:inputText styleClass="form-control" placeholder="Usuário" value="#{usuarioBean.usuario.nomeUsuario}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><p:password styleClass="form-control" placeholder="Senha" value="#{usuarioBean.usuario.senha}"/></td>                               
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:commandButton styleClass="btn btn-secondary" value="Entrar" action="#{usuarioBean.login}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>         
+                    </h:form>
+
                 </div>                      
             </header>
 

@@ -30,9 +30,11 @@
                                 <center>  <h:outputText value="#{pedido1.oab}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center><p:commandButton actionListener="#{pedidoBean.mListaExcluido(pedido1.id)}" value="Excluir" oncomplete="PF('justificativa').show()" update="@all">
-                                        <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                    </p:commandButton></center>
+                                <center> 
+                                    <p:commandButton value="Abrir Dialog." type="button" onclick="PF('dialogo').show();" update=":form_dialogo">
+                                        <f:setPropertyActionListener target="#{pedido1}" value="#{pedidoBean.pedido}" />
+                                    </p:commandButton>
+                                </center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -109,7 +111,7 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center> 
-                                    <p:commandButton value="Excluir" onclick="PF('justificativa').show()" update=":justificativa">
+                                    <p:commandButton value="Excluir" onclick="PF('justificativa').show()" update=":dialog_justif">
                                         <f:setPropertyActionListener value="#{pedido4}" target="#{pedidoBean.pedido}"/>
                                     </p:commandButton>
                                 </center>
@@ -121,18 +123,19 @@
         </div>
     </div>
 
-    <!-- MODAL DIALOGO JUSTIFICATIVA -->
-    <p:dialog modal="true" widgetVar="justificativa">
-        <h:form id="dialog_justif">
+
+    <p:dialog widgetVar="dialogo" header="Justificativa" modal="true" appendToBody="true" resizable="false" draggable="false">
+        <h:form id="form_dialogo">
             <p:panelGrid columns="2">
-                <h3>Confirma a remoção do processo selecionado?</h3> 
                 <p:outputLabel value="Justificativa:*"/>              
                 <p:inputText value="#{pedidoBean.pedido.justificativa}" />
-                <p:commandButton value="Confirmar" actionListener="#{pedidoBean.mListaExcluido(pedidoBean.pedido.id, pedidoBean.pedido.justificativa)}" update="@form, :formTable" onclick="PF('justificativa').hide()" />
-                <p:commandButton value="Cancelar" onclick="PF('justificativa').hide()"/>
+                <p:commandButton value="Confirmar" actionListener="#{pedidoBean.mListaExcluido(pedidoBean.pedido.id, pedidoBean.pedido.justificativa)}" update="@form, :formTable1" />
+                <p:commandButton value="Cancelar" onclick="PF('dialogo').hide()"/>
             </p:panelGrid>
         </h:form>
     </p:dialog>
 
 </ui:decorate>
+
+<!-- MODAL DIALOGO JUSTIFICATIVA -->
 
