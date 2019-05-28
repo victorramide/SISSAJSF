@@ -16,21 +16,21 @@ import org.hibernate.Transaction;
  * @author AlunoTI
  */
 public abstract class GenericDAO<T, Type extends Serializable> {
-    
+
     private Class<T> persistenceClass;
-    
-    public GenericDAO(Class persistenceClass){
+
+    public GenericDAO(Class persistenceClass) {
         super();
         this.persistenceClass = persistenceClass;
     }
-    
+
     public T save(T entity) {
         T retorno = null;
         org.hibernate.Session sessao = dao.HibernateUtil.getSession();
         Transaction tx = null;
         try {
             tx = sessao.beginTransaction();
-            retorno = (T)sessao.merge(entity);
+            retorno = (T) sessao.merge(entity);
             sessao.flush();
             tx.commit();
         } catch (Exception e) {
@@ -41,13 +41,13 @@ public abstract class GenericDAO<T, Type extends Serializable> {
         }
         return retorno;
     }
-    
-       public T delete(Long id) {
+
+    public T delete(Long id) {
         org.hibernate.Session session = dao.HibernateUtil.getSession();
         Transaction tx = null;
-        
+
         T retorno = null;
-        
+
         try {
             tx = session.beginTransaction();
             retorno = (T) session.get(persistenceClass, id);
@@ -55,28 +55,31 @@ public abstract class GenericDAO<T, Type extends Serializable> {
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } 
-        
-       return retorno;
+        }
+
+        return retorno;
     }
 
-    
-    public List<T> listALL(){
+    public List<T> listALL() {
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(persistenceClass);
         return criteria.list();
     }
-    
-    public T find(Long id){
+
+    /*public T listExcluido(Long id) {
         T retorno = null;
-        
-        try{
-            Session sessao = dao.HibernateUtil.getSession();
-            retorno = (T) sessao.get(persistenceClass, id);
-        }catch(Exception e){
+        org.hibernate.Session session = dao.HibernateUtil.getSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            retorno = (T) session.get(persistenceClass, id);
+            session.update(retorno);
+            tx.commit();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return retorno;
-    }
-    
+    }*/
+
 }

@@ -13,38 +13,28 @@
                 <br/><h1><center>Lista de pedidos excluídos da lista</center></h1><br/>
                 <p>
                     <h:form id="formTable">
-                        <p:dataTable var="excluido" value="" id="tabela5">
+                        <p:dataTable var="excluido" value="#{pedidoBean.getListaExcluido()}" id="tabela5">
                             <p:column headerText="Numero do Processo">
-                                <h:outputText value="#{excluido.numeroProcesso}" />
+                                <center><h:outputText value="#{excluido.numeroProcesso}" /></center>
                             </p:column> 
                             <p:column headerText="Classe">
-                                <h:outputText value="#{excluido.classe}" />
+                                <center><h:outputText value="#{excluido.classe}" /></center>
                             </p:column>    
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{excluido.tipo}" />
+                                <center><h:outputText value="#{excluido.tipo}" /></center>
                             </p:column>
                             <p:column headerText="OAB">
-                                <h:outputText value="#{excluido.oab}" />
+                                <center><h:outputText value="#{excluido.oab}" /></center>
                             </p:column>
                             <p:column headerText="Justificativa">
-                                <h:outputText value="#{pedidoBean.pedido.justificativa}" />
+                                <center><h:outputText value="#{excluido.justificativa}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <p:commandButton value="excluir" actionListener="#{pedidoBean.excluir}" update="tabela5"/>
+                                <center><p:commandButton value="excluir" actionListener="#{pedidoBean.deletePedido(excluido.id)}" update="tabela5"/></center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </p>
-                <h:form id="fomTable10">
-                    <h:dataTable var="pedido" value="#{pedidoBean.getpComum()}" id="tabela">
-                        <h:column > 
-                            <f:facet name="header"> 
-                                <h:outputText value="Codigo" /> 
-                            </f:facet> 
-                            <h:outputText value="#{pedido.numeroProcesso}"/> 
-                        </h:column> 
-                    </h:dataTable>
-                </h:form>
             </div>
         </div>
     </div>

@@ -46,7 +46,16 @@ public class PedidoBean {
         pedidoDAO.save(pedido);
         pedido = new Pedido();
     }
-
+    
+    public void deletePedido(Long id){
+        Pedido p = pedidoDAO.delete(id);
+        if (p != null) {
+            pedido = p;
+            pedidosExcluidos = pedidoDAO.processoExcluido();
+        }
+    }
+    
+    /*
     public void deletePComum(Long id) {
         Pedido p = pedidoDAO.delete(id);
         if (p != null) {
@@ -78,7 +87,12 @@ public class PedidoBean {
             sentencasPrioridade = pedidoDAO.sentencaPrioridade();
         }
     }
+*/
 
+    public void mListaExcluido(Long id){
+        pedidoDAO.listExcluido(id);
+    }
+    
     public List<Pedido> getpComum() {
         processosComum = pedidoDAO.processoComum();
         return processosComum;
@@ -98,13 +112,10 @@ public class PedidoBean {
         sentencasPrioridade = pedidoDAO.sentencaPrioridade();
         return sentencasPrioridade;
     }
-
-    public void editar() {
-
-    }
-
-    public void excluir() {
-
+    
+    public List<Pedido> getListaExcluido() {
+        pedidosExcluidos = pedidoDAO.processoExcluido();
+        return pedidosExcluidos;
     }
 
     public Pedido getPedido() {
