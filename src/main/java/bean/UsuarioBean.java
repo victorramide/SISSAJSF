@@ -39,6 +39,15 @@ public class UsuarioBean implements Serializable {
         }
 
     }
+    
+    public String pagLogin(){
+    
+        if(!usuario.isLogado()==true){
+            return "/faces/form_login.xhtml";
+        }
+        
+        return "/faces/usuario.xhtml";
+    }
 
     public Usuario getUsuario() {
         return usuario;
