@@ -4,7 +4,8 @@
       xmlns="http://www.w3.org/1999/xhtml"      
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>  
         <!-- Required meta tags -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -25,9 +26,14 @@
                         <h3>Sistema de Suporte ao Advogado</h3>
                     </div>
                     <div class="col-md-4">
-                        <ui:insert name="login" >
-                            <ui:include src="#{usuarioBean.pagLogin}" />
-                        </ui:insert>
+                        <c:choose>
+                            <c:when test="#{usuarioBean.usuario.logado == true}" >
+                                <ui:include src="usuario.xhtml"/>
+                            </c:when>
+                            <c:otherwise>
+                                <ui:include src="form_login.xhtml"/>  
+                            </c:otherwise>
+                        </c:choose> 
                     </div>
                 </div>                      
             </header>

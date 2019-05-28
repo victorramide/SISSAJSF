@@ -5,19 +5,20 @@
              xmlns:p="http://primefaces.org/ui"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml">
-
-    <h:form id="form-logoff">
-        <table border="0">                       
-            <tbody>
-                <tr>
-                    <td><p:outputLabel value="Seja bem vindo, #{usuarioBean.usuario.nome}!"/></td>
-                </tr>
-                <tr>
-                    <td>
-                        <p:commandButton styleClass="btn btn-danger" value="Encerrar sessão" action="#{usuarioBean.usuario.setLogado(false)}" update="@all"/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>         
-    </h:form>
+    <ui:composition>
+        <h:form id="form-logoff">
+            <table border="0">                       
+                <tbody>
+                    <tr>
+                        <td><p:outputLabel value="Seja bem vindo, #{usuarioBean.usuario.nome}!"/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:commandButton styleClass="btn btn-danger" value="Encerrar sessão" action="#{usuarioBean.usuario.setLogado(false)}" update="@all"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>         
+        </h:form>
+    </ui:composition>
 </ui:decorate>

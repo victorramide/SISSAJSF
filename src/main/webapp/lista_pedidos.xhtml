@@ -5,7 +5,8 @@
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              template="template.xhtml"
-             xmlns:f="http://xmlns.jcp.org/jsf/core">
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
     <div id="lista-pedidos">
@@ -123,12 +124,17 @@
         <h:form id="dialog_justif">
             <table>
                 <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
                     <td><label>Justificativa para Remoção:*:</label></td>
                     <td><p:inputText value="#{pedidoBean.pedido.justificativa}" /></td>
                 </tr>
                 <tr>
                     <td>
-                        <p:commandButton value="CONFIRMAR" action="#{pedidoBean.excluir}" process="@form" update="@all" oncomplete="PF('justificativa').hide()"/>
+                        <p:commandButton value="CONFIRMAR" action="#{pedidoBean.mListaExcluido()}" process="@form" update="@all" oncomplete="PF('justificativa').hide()"/>
                     </td>
                     <td>
                         <p:commandButton value="CANCELAR" process="@none" oncomplete="PF('justificativa').hide()"/>

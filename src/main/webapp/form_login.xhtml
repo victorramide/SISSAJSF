@@ -5,23 +5,24 @@
              xmlns:p="http://primefaces.org/ui"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml">
-
-    <h:form id="form-login">
-        <table border="0">                       
-            <tbody>
-                <tr>
-                    <td><p:inputText styleClass="form-control" placeholder="Usuário" value="#{usuarioBean.usuario.nomeUsuario}"/></td>
-                </tr>
-                <tr>
-                    <td><p:password styleClass="form-control" placeholder="Senha" value="#{usuarioBean.usuario.senha}"/></td>                               
-                </tr>
-                <tr>
-                    <td>
-                        <h:commandButton styleClass="btn btn-secondary" value="Entrar" action="#{usuarioBean.login}"/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>         
-    </h:form>
+    <ui:composition>
+        <h:form id="form-login">
+            <table border="0">                       
+                <tbody>
+                    <tr>
+                        <td><p:inputText styleClass="form-control" placeholder="Usuário" value="#{usuarioBean.usuario.nomeUsuario}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p:password styleClass="form-control" placeholder="Senha" value="#{usuarioBean.usuario.senha}"/></td>                               
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:commandButton styleClass="btn btn-secondary" value="Entrar" action="#{usuarioBean.login}"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>         
+        </h:form>
+    </ui:composition>
 </ui:decorate>
 
