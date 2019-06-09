@@ -6,16 +6,8 @@
 package dao;
 
 import database.Pedido;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaUpdate;
-import javax.persistence.criteria.Root;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -84,6 +76,22 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
             tx = session.beginTransaction();
             retorno = (Pedido) session.get(Pedido.class, id);
             retorno.setExcluido(true);
+            session.update(retorno);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return retorno;
+    }
+    public Pedido restaurarPedido(Long id) {
+        Pedido retorno = null;
+        org.hibernate.Session session = dao.HibernateUtil.getSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            retorno = (Pedido) session.get(Pedido.class, id);
+            retorno.setJustificativa("");
+            retorno.setExcluido(false);
             session.update(retorno);
             tx.commit();
         } catch (Exception e) {

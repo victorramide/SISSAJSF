@@ -58,6 +58,12 @@ public class PedidoBean {
         pedidoDAO.listExcluido(id);
     }
     
+    public void restaurarPedido(Long id){
+        pedidoDAO.restaurarPedido(id);
+    }
+    
+    
+    
     public List<Pedido> getpComum() {
         processosComum = pedidoDAO.processoComum();
         return processosComum;
@@ -82,6 +88,10 @@ public class PedidoBean {
         pedidosExcluidos = pedidoDAO.processoExcluido();
         return pedidosExcluidos;
     }
+    
+    
+    
+    
 
     public Pedido getPedido() {
         return pedido;

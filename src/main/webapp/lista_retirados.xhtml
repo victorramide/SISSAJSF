@@ -30,7 +30,10 @@
                                 <center><h:outputText value="#{excluido.justificativa}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center><p:commandButton value="excluir" actionListener="#{pedidoBean.deletePedido(excluido.id)}" update="tabela5"/></center>
+                                <center>
+                                    <p:commandButton value="restaurar" actionListener="#{pedidoBean.restaurarPedido(excluido.id)}" update="tabela5"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.deletePedido(excluido.id)}" update="tabela5"/>
+                                </center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
