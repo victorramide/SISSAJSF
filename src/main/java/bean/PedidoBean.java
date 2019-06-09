@@ -39,7 +39,6 @@ public class PedidoBean {
         sentencasPrioridade = new ArrayList<>();
         pedidosExcluidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
-        //  pedidos = pedidoDAO.listALL(); //Provavelmente não teremos necessidade desse método.
     }
 
     public void salvar() {
@@ -54,43 +53,9 @@ public class PedidoBean {
             pedidosExcluidos = pedidoDAO.processoExcluido();
         }
     }
-    
-    /*
-    public void deletePComum(Long id) {
-        Pedido p = pedidoDAO.delete(id);
-        if (p != null) {
-            pedido = p;
-            processosComum = pedidoDAO.processoComum();
-        }
-    }
 
-    public void deletePPrioridade(Long id) {
-        Pedido p = pedidoDAO.delete(id);
-        if (p != null) {
-            pedido = p;
-            processosPrioridade = pedidoDAO.processoPrioridade();
-        }
-    }
-
-    public void deleteSComum(Long id) {
-        Pedido p = pedidoDAO.delete(id);
-        if (p != null) {
-            pedido = p;
-            sentencasComum = pedidoDAO.sentencaComum();
-        }
-    }
-
-    public void deleteSPrioridade(Long id) {
-        Pedido p = pedidoDAO.delete(id);
-        if (p != null) {
-            pedido = p;
-            sentencasPrioridade = pedidoDAO.sentencaPrioridade();
-        }
-    }
-*/
-
-    public void mListaExcluido(Long id, String justific){
-        pedidoDAO.listExcluido(id, justific);
+    public void mListaExcluido(Long id){
+        pedidoDAO.listExcluido(id);
     }
     
     public List<Pedido> getpComum() {

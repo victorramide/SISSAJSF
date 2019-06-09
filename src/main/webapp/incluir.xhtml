@@ -16,25 +16,15 @@
                         <table>
                             <tr>
                                 <td><label>Número do processo:*:</label></td><br/>
-                                <td><p:inputText value="#{pedidoBean.pedido.numeroProcesso}" placeholder="Ex: 8000111-11.2011" style="width: 300px;"/></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <br/>
-                                </td>
+                                <td><p:inputText id="numProcesso" value="#{pedidoBean.pedido.numeroProcesso}" style="width: 300px;"/></td>
                             </tr>
                             <tr>
                                 <td><label>Classe Processual:*:</label></td>
                                 <td><p:inputText value="#{pedidoBean.pedido.classe}" placeholder="Ex: Alimentos" style="width: 300px;"/></td>
                             </tr>
-                               <tr>
-                                <td>
-                                    <br/>
-                                </td>
-                            </tr>
                             <tr>
                                 <td>
-                                    <p:outputLabel for="tipo" value="Tipo:" />
+                                    <p:outputLabel for="tipo" value="Tipo*:" />
                                 </td>
                                 <td>
                                     <p:selectOneRadio id="tipo" value="#{pedidoBean.pedido.tipo}">
@@ -44,25 +34,15 @@
                                     </p:selectOneRadio>
                                 </td>
                             </tr>
-                               <tr>
-                                <td>
-                                    <br/>
-                                </td>
-                            </tr>
                             <tr>
                                 <td>    
                                     <h:outputLabel value="Data de conclusão:" />
                                 </td>
                                 <td>
                                     <p:calendar value="#{pedidoBean.pedido.dataConclusao}" locale="pt_BR"
-                                                id="dataCadastro" showButtonPanel="true" placeholder="Ex: 11/11/2011" style="width: 300px;" >
+                                                id="dataCadastro" showButtonPanel="true" style="width: 300px;" >
                                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
                                     </p:calendar>
-                                </td>
-                            </tr>
-                               <tr>
-                                <td>
-                                    <br/>
                                 </td>
                             </tr>
                             <tr>
@@ -73,19 +53,9 @@
                                     <p:selectBooleanButton id="prioridade" value="#{pedidoBean.pedido.prioridade}" onLabel="Sim" offLabel="Não" style="width:100px" />
                                 </td>
                             </tr>
-                               <tr>
-                                <td>
-                                    <br/>
-                                </td>
-                            </tr>
                             <tr>
-                                <td>OAB vinculado(sem ponto)*:</td>
+                                <td>OAB (sem ponto)*:</td>
                                 <td><p:inputText value="#{pedidoBean.pedido.oab}" placeholder="Ex: 99999" style="width: 300px;"/></td>                     
-                            </tr>
-                             <tr>
-                                <td>
-                                    <br/>
-                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2">

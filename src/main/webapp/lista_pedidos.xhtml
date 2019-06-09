@@ -30,10 +30,9 @@
                                 <center>  <h:outputText value="#{pedido1.oab}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center> 
-                                    <p:commandButton value="Abrir Dialog." type="button" onclick="PF('dialogo').show();" update=":form_dialogo">
-                                        <f:setPropertyActionListener target="#{pedido1}" value="#{pedidoBean.pedido}" />
-                                    </p:commandButton>
+                                <center>
+                                    <p:inputText value="#{pedido1.justificativa}" placeholder="Justifique"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido1.id)}" update="tabela1"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -56,9 +55,10 @@
                                 <center><h:outputText value="#{pedido2.oab}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center><p:commandButton actionListener="#{pedidoBean.mListaExcluido(pedido2.id)}" value="Excluir" oncomplete="PF('justificativa').show()" update="@all">
-                                        <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                    </p:commandButton></center>
+                                <center>
+                                    <p:inputText value="#{pedido2.justificativa}" placeholder="Justifique"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido2.id)}" update="tabela2"/>
+                                </center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -83,9 +83,10 @@
                                 <center><h:outputText value="#{pedido3.dataConclusao}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center> <p:commandButton  actionListener="#{pedidoBean.mListaExcluido(pedido3.id)}" value="Excluir" oncomplete="PF('justificativa').show()"  update="@all">
-                                        <f:setPropertyActionListener value="#{P}" target="#{pedidoBean.pedido}"/>
-                                    </p:commandButton></center>                            
+                                <center>
+                                    <p:inputText value="#{pedido3.justificativa}" placeholder="Justifique"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido3.id)}" update="tabela3"/>
+                                </center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -110,10 +111,9 @@
                                 <center><h:outputText value="#{pedido4.dataConclusao}" /></center>
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
-                                <center> 
-                                    <p:commandButton value="Excluir" onclick="PF('justificativa').show()" update=":dialog_justif">
-                                        <f:setPropertyActionListener value="#{pedido4}" target="#{pedidoBean.pedido}"/>
-                                    </p:commandButton>
+                                <center>
+                                    <p:inputText value="#{pedido4.justificativa}" placeholder="Justifique"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido4.id)}" update="tabela4"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -122,20 +122,6 @@
             </div>
         </div>
     </div>
-
-
-    <p:dialog widgetVar="dialogo" header="Justificativa" modal="true" appendToBody="true" resizable="false" draggable="false">
-        <h:form id="form_dialogo">
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Justificativa:*"/>              
-                <p:inputText value="#{pedidoBean.pedido.justificativa}" />
-                <p:commandButton value="Confirmar" actionListener="#{pedidoBean.mListaExcluido(pedidoBean.pedido.id, pedidoBean.pedido.justificativa)}" update="@form, :formTable1" />
-                <p:commandButton value="Cancelar" onclick="PF('dialogo').hide()"/>
-            </p:panelGrid>
-        </h:form>
-    </p:dialog>
-
 </ui:decorate>
 
-<!-- MODAL DIALOGO JUSTIFICATIVA -->
 
