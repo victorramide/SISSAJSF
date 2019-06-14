@@ -10,9 +10,11 @@ import database.Pedido;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -23,76 +25,60 @@ import javax.faces.bean.ViewScoped;
 public class PedidoBean {
 
     private Pedido pedido;
-    private List<Pedido> processosComum;
-    private List<Pedido> processosPrioridade;
-    private List<Pedido> sentencasComum;
-    private List<Pedido> sentencasPrioridade;
-    private List<Pedido> pedidosExcluidos;
+    private List<Pedido> pedidosComuns;
+    private List<Pedido> pedidosPrioridade;
+    private List<Pedido> pedidosSentencasComuns;
+    private List<Pedido> pedidosSentencasPrioridade;
+    private List<Pedido> pedidosRemovidos;
     private PedidoDAO pedidoDAO;
 
     @PostConstruct
     public void Init() {
         pedido = new Pedido();
-        processosComum = new ArrayList<>();
-        processosPrioridade = new ArrayList<>();
-        sentencasComum = new ArrayList<>();
-        sentencasPrioridade = new ArrayList<>();
-        pedidosExcluidos = new ArrayList<>();
+        pedidosComuns = new ArrayList<>();
+        pedidosPrioridade = new ArrayList<>();
+        pedidosSentencasComuns = new ArrayList<>();
+        pedidosSentencasPrioridade = new ArrayList<>();
+        pedidosRemovidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
     }
 
     public void salvar() {
+        if(contarAdvogadoListaComum(pedido.getOab()) >= 3){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Já existem 3 processos vinculados a essa OAB", "Erro de envio!"));
+        }
         pedidoDAO.save(pedido);
         pedido = new Pedido();
     }
     
-    public void deletePedido(Long id){
+    public void excluirPedido(Long id){
         Pedido p = pedidoDAO.delete(id);
         if (p != null) {
             pedido = p;
-            pedidosExcluidos = pedidoDAO.processoExcluido();
+            pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
         }
     }
 
-    public void mListaExcluido(Long id){
-        pedidoDAO.listExcluido(id);
+    public void removerPedido(Long id){
+        pedidoDAO.removerPedido(id);
     }
     
     public void restaurarPedido(Long id){
         pedidoDAO.restaurarPedido(id);
     }
     
-    
-    
-    public List<Pedido> getpComum() {
-        processosComum = pedidoDAO.processoComum();
-        return processosComum;
-    }
-
-    public List<Pedido> getpPrioridade() {
-        processosPrioridade = pedidoDAO.processoPrioridade();
-        return processosPrioridade;
-    }
-
-    public List<Pedido> getsComum() {
-        sentencasComum = pedidoDAO.sentencaComum();
-        return sentencasComum;
-    }
-
-    public List<Pedido> getsPrioridade() {
-        sentencasPrioridade = pedidoDAO.sentencaPrioridade();
-        return sentencasPrioridade;
-    }
-    
-    public List<Pedido> getListaExcluido() {
-        pedidosExcluidos = pedidoDAO.processoExcluido();
-        return pedidosExcluidos;
+    public int contarAdvogadoListaComum(String oab){
+        int count=0;
+        for(Pedido p : pedidosComuns){
+            if(p.getOab().equals(oab)){
+                count++;
+            }
+        }
+        System.out.println(count);
+        return count;
     }
     
     
-    
-    
-
     public Pedido getPedido() {
         return pedido;
     }
@@ -101,44 +87,49 @@ public class PedidoBean {
         this.pedido = pedido;
     }
 
-    public List<Pedido> getProcessosComum() {
-        return processosComum;
+    public List<Pedido> getPedidosComuns() {
+        pedidosComuns = pedidoDAO.listaPedidoComum();
+        return pedidosComuns;
     }
 
-    public void setProcessosComum(List<Pedido> processosComum) {
-        this.processosComum = processosComum;
+    public void setPedidosComuns(List<Pedido> processosComum) {
+        this.pedidosComuns = processosComum;
     }
 
-    public List<Pedido> getProcessosPrioridade() {
-        return processosPrioridade;
+    public List<Pedido> getPedidosPrioridade() {
+        pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
+        return pedidosPrioridade;
     }
 
-    public void setProcessosPrioridade(List<Pedido> processosPrioridade) {
-        this.processosPrioridade = processosPrioridade;
+    public void setPedidosPrioridade(List<Pedido> processosPrioridade) {
+        this.pedidosPrioridade = processosPrioridade;
     }
 
-    public List<Pedido> getSentencasComum() {
-        return sentencasComum;
+    public List<Pedido> getPedidosSentencasComuns() {
+        pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
+        return pedidosSentencasComuns;
     }
 
-    public void setSentencasComum(List<Pedido> sentencasComum) {
-        this.sentencasComum = sentencasComum;
+    public void setPedidosSentencasComuns(List<Pedido> sentencasComum) {
+        this.pedidosSentencasComuns = sentencasComum;
     }
 
-    public List<Pedido> getSentencasPrioridade() {
-        return sentencasPrioridade;
+    public List<Pedido> getPedidosSentencasPrioridade() {
+        pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
+        return pedidosSentencasPrioridade;
     }
 
-    public void setSentencasPrioridade(List<Pedido> sentencasPrioridade) {
-        this.sentencasPrioridade = sentencasPrioridade;
+    public void setPedidosSentencasPrioridade(List<Pedido> sentencasPrioridade) {
+        this.pedidosSentencasPrioridade = sentencasPrioridade;
     }
 
-    public List<Pedido> getPedidosExcluidos() {
-        return pedidosExcluidos;
+    public List<Pedido> getPedidosRemovidos() {
+        pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+        return pedidosRemovidos;
     }
 
-    public void setPedidosExcluidos(List<Pedido> pedidosExcluidos) {
-        this.pedidosExcluidos = pedidosExcluidos;
+    public void setPedidosRemovidos(List<Pedido> pedidosExcluidos) {
+        this.pedidosRemovidos = pedidosExcluidos;
     }
 
     public PedidoDAO getPedidoDAO() {

@@ -16,7 +16,7 @@
                 <p>
                     <br/><h2>Processos comuns</h2><br/>
                     <h:form id="formTable1">
-                        <p:dataTable var="pedido1" value="#{pedidoBean.getpComum()}" id="tabela1">
+                        <p:dataTable var="pedido1" value="#{pedidoBean.pedidosComuns}" id="tabela1">
                             <p:column headerText="Numero do Processo">
                                 <center> <h:outputText value="#{pedido1.numeroProcesso}" /></center>
                             </p:column> 
@@ -32,7 +32,7 @@
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center>
                                     <p:inputText value="#{pedido1.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido1.id)}" update="tabela1"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido1.id)}" update="tabela1"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -41,7 +41,7 @@
                 <p>
                     <br/><h2>Processos prioridade</h2><br/>
                     <h:form id="formTable2">
-                        <p:dataTable var="pedido2" value="#{pedidoBean.getpPrioridade()}" id="tabela2">
+                        <p:dataTable var="pedido2" value="#{pedidoBean.pedidosPrioridade}" id="tabela2">
                             <p:column headerText="Numero do Processo">
                                 <center> <h:outputText value="#{pedido2.numeroProcesso}" /></center>
                             </p:column> 
@@ -57,7 +57,7 @@
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center>
                                     <p:inputText value="#{pedido2.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido2.id)}" update="tabela2"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido2.id)}" update="tabela2"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -66,7 +66,7 @@
                 <p>
                     <br/><h2>Processos sentenças comuns</h2><br/>
                     <h:form id="formTable3">
-                        <p:dataTable var="pedido3" value="#{pedidoBean.getsComum()}" id="tabela3">
+                        <p:dataTable var="pedido3" value="#{pedidoBean.pedidosSentencasComuns}" id="tabela3">
                             <p:column headerText="Numero do Processo">
                                 <center><h:outputText value="#{pedido3.numeroProcesso}" /></center>
                             </p:column> 
@@ -85,7 +85,7 @@
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center>
                                     <p:inputText value="#{pedido3.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido3.id)}" update="tabela3"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido3.id)}" update="tabela3"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -94,7 +94,7 @@
                 <p>
                     <br/><h2>Processos sentenças Prioridade</h2><br/>
                     <h:form id="formTable">
-                        <p:dataTable var="pedido4" value="#{pedidoBean.getsPrioridade()}" id="tabela4">
+                        <p:dataTable var="pedido4" value="#{pedidoBean.pedidosSentencasPrioridade}" id="tabela4">
                             <p:column headerText="Numero do Processo">
                                 <center><h:outputText value="#{pedido4.numeroProcesso}" /></center>
                             </p:column> 
@@ -113,7 +113,7 @@
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center>
                                     <p:inputText value="#{pedido4.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.mListaExcluido(pedido4.id)}" update="tabela4"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido4.id)}" update="tabela4"/>
                                 </center>
                             </p:column>
                         </p:dataTable>

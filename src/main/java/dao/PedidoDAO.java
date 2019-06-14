@@ -23,7 +23,7 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         super(Pedido.class);
     }
 
-    public List<Pedido> processoComum() {
+    public List<Pedido> listaPedidoComum() {
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(Pedido.class);
         criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
@@ -32,7 +32,7 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         return criteria.list();
     }
 
-    public List<Pedido> processoPrioridade() {
+    public List<Pedido> listaPedidoPrioridade() {
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(Pedido.class);
         criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
@@ -41,7 +41,7 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         return criteria.list();
     }
 
-    public List<Pedido> sentencaComum() {
+    public List<Pedido> listaPedidoSentencaComum() {
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(Pedido.class);
         criteria.add(Restrictions.eq("tipo", "sentenca"));
@@ -51,7 +51,7 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         return criteria.list();
     }
 
-    public List<Pedido> sentencaPrioridade() {
+    public List<Pedido> listaPedidoSentencaPrioridade() {
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(Pedido.class);
         criteria.add(Restrictions.eq("tipo", "sentenca"));
@@ -61,14 +61,14 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         return criteria.list();
     }
 
-    public List<Pedido> processoExcluido() {
+    public List<Pedido> listaPedidoRemovido() {
         Session sessao = dao.HibernateUtil.getSession();
         Criteria criteria = sessao.createCriteria(Pedido.class);
         criteria.add(Restrictions.eq("excluido", true));
         return criteria.list();
     }
 
-    public Pedido listExcluido(Long id) {
+    public Pedido removerPedido(Long id) {
         Pedido retorno = null;
         org.hibernate.Session session = dao.HibernateUtil.getSession();
         Transaction tx = null;

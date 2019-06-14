@@ -13,7 +13,7 @@
                 <br/><h1><center>Lista de pedidos excluídos da lista</center></h1><br/>
                 <p>
                     <h:form id="formTable">
-                        <p:dataTable var="excluido" value="#{pedidoBean.getListaExcluido()}" id="tabela5">
+                        <p:dataTable var="excluido" value="#{pedidoBean.pedidosRemovidos}" id="tabela5">
                             <p:column headerText="Numero do Processo">
                                 <center><h:outputText value="#{excluido.numeroProcesso}" /></center>
                             </p:column> 
@@ -32,7 +32,7 @@
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
                                 <center>
                                     <p:commandButton value="restaurar" actionListener="#{pedidoBean.restaurarPedido(excluido.id)}" update="tabela5"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.deletePedido(excluido.id)}" update="tabela5"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.excluirPedido(excluido.id)}" update="tabela5"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
