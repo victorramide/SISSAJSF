@@ -8,6 +8,7 @@ package bean;
 import dao.PedidoDAO;
 import database.Pedido;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -93,6 +94,10 @@ public class PedidoBean {
     }
 
     public Pedido getPedido() {
+        Date data = new Date();
+        if(pedido.getDataConclusao() == null){
+            pedido.setDataConclusao(data);
+        }
         return pedido;
     }
 
