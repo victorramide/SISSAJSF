@@ -17,18 +17,18 @@
                         <table>
                             <tr>
                                 <td><label>Número do processo:*:</label></td><br/>
-                                <td><p:inputText id="numProcesso" value="#{pedidoBean.pedido.numeroProcesso}" style="width: 300px;"/></td>
+                                <td><p:inputText id="numProcesso" value="#{pedidoBean.pedido.numeroProcesso}" style="width: 300px;" required="true"/></td>
                             </tr>
                             <tr>
                                 <td><label>Classe Processual:*:</label></td>
-                                <td><p:inputText value="#{pedidoBean.pedido.classe}" placeholder="Ex: Alimentos" style="width: 300px;"/></td>
+                                <td><p:inputText value="#{pedidoBean.pedido.classe}" placeholder="Ex: Alimentos" style="width: 300px;" required="true"/></td>
                             </tr>
                             <tr>
                                 <td>
                                     <p:outputLabel for="tipo" value="Tipo*:" />
                                 </td>
                                 <td>
-                                    <p:selectOneRadio id="tipo" value="#{pedidoBean.pedido.tipo}">
+                                    <p:selectOneRadio id="tipo" value="#{pedidoBean.pedido.tipo}" required="true">
                                         <f:selectItem itemLabel="Despacho" itemValue="despacho" /><bold/>
                                         <f:selectItem itemLabel="Decisão" itemValue="decisao" /><p/>
                                         <f:selectItem itemLabel="Sentença" itemValue="sentenca" />
@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <td>OAB (sem ponto)*:</td>
-                                <td><p:inputText value="#{pedidoBean.pedido.oab}" placeholder="Ex: 99999" style="width: 300px;"/></td>                     
+                                <td><p:inputText value="#{pedidoBean.pedido.oab}" placeholder="Ex: 99999" style="width: 300px;" required="true"/></td>                     
                             </tr>
                             <tr>
                                 <td colspan="2">
