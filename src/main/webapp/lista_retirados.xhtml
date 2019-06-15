@@ -7,32 +7,32 @@
              xmlns:p="http://primefaces.org/ui"
              xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <div id="lista-pedidos">
+    <div id="lista-pedidos" >
         <div class="container">
-            <div class="jumbotron">
+            <div class="jumbotron" >
                 <br/><h1><center>Lista de pedidos excluídos da lista</center></h1><br/>
                 <p>
                     <h:form id="formTable">
-                        <p:dataTable var="excluido" value="#{pedidoBean.pedidosRemovidos}" id="tabela5">
-                            <p:column headerText="Numero do Processo">
+                        <p:dataTable var="excluido" value="#{pedidoBean.pedidosRemovidos}" id="tabela5"  rowIndexVar="rowIndex" >
+                            <p:column headerText="#" style="width: 4%">
+                                #{rowIndex+1}
+                            </p:column> 
+                            <p:column headerText="Processo">
                                 <center><h:outputText value="#{excluido.numeroProcesso}" /></center>
                             </p:column> 
-                            <p:column headerText="Classe">
-                                <center><h:outputText value="#{excluido.classe}" /></center>
-                            </p:column>    
                             <p:column headerText="Tipo">
                                 <center><h:outputText value="#{excluido.tipo}" /></center>
                             </p:column>
                             <p:column headerText="OAB">
-                                <center><h:outputText value="#{excluido.oab}" /></center>
+                                <center><h:outputText value="#{excluido.oab}"/></center>
                             </p:column>
                             <p:column headerText="Justificativa">
-                                <center><h:outputText value="#{excluido.justificativa}" /></center>
+                                <center><h:outputText value="#{excluido.justificativa}" style="font-size: small" /></center>
                             </p:column>
-                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" >
                                 <center>
-                                    <p:commandButton value="restaurar" actionListener="#{pedidoBean.restaurarPedido(excluido.id)}" update="tabela5"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.excluirPedido(excluido.id)}" update="tabela5"/>
+                                    <p:commandButton value="restaurar" action="#{pedidoBean.restaurarPedido(excluido.id)}" update="tabela5" style="width: 120px; height: 40px" />
+                                    <p:commandButton value="excluir" action="#{pedidoBean.excluirPedido(excluido.id)}" update="tabela5" style="width: 120px; height: 40px" />
                                 </center>
                             </p:column>
                         </p:dataTable>

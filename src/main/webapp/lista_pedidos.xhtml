@@ -16,8 +16,11 @@
                 <p>
                     <br/><h2>Processos comuns</h2><br/>
                     <h:form id="formTable1">
-                        <p:dataTable var="pedido1" value="#{pedidoBean.pedidosComuns}" id="tabela1">
-                            <p:column headerText="Numero do Processo">
+                        <p:dataTable var="pedido1" value="#{pedidoBean.pedidosComuns}" id="tabela1" rowIndexVar="rowIndex" resizableColumns="true">
+                            <p:column headerText="#" style="width: 4%">
+                                #{rowIndex+1}
+                            </p:column> 
+                            <p:column headerText="Processo">
                                 <center> <h:outputText value="#{pedido1.numeroProcesso}" /></center>
                             </p:column> 
                             <p:column headerText="Classe">
@@ -29,10 +32,10 @@
                             <p:column headerText="OAB">
                                 <center>  <h:outputText value="#{pedido1.oab}" /></center>
                             </p:column>
-                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido1.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido1.id)}" update="tabela1"/>
+                                    <p:inputText value="#{pedido1.justificativa}" placeholder="Justifique" style="width: 55%"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido1.id)}" update="tabela1" style="width: 45%"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -41,8 +44,11 @@
                 <p>
                     <br/><h2>Processos prioridade</h2><br/>
                     <h:form id="formTable2">
-                        <p:dataTable var="pedido2" value="#{pedidoBean.pedidosPrioridade}" id="tabela2">
-                            <p:column headerText="Numero do Processo">
+                        <p:dataTable var="pedido2" value="#{pedidoBean.pedidosPrioridade}" id="tabela2" rowIndexVar="rowIndex" resizableColumns="true">
+                            <p:column headerText="#" style="width: 4%">
+                                #{rowIndex+1}
+                            </p:column> 
+                            <p:column headerText="Processo">
                                 <center> <h:outputText value="#{pedido2.numeroProcesso}" /></center>
                             </p:column> 
                             <p:column headerText="Classe">
@@ -54,10 +60,10 @@
                             <p:column headerText="OAB">
                                 <center><h:outputText value="#{pedido2.oab}" /></center>
                             </p:column>
-                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido2.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido2.id)}" update="tabela2"/>
+                                    <p:inputText value="#{pedido2.justificativa}" placeholder="Justifique" style="width: 55%"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido2.id)}" update="tabela2" style="width: 45%"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -66,26 +72,26 @@
                 <p>
                     <br/><h2>Processos sentenças comuns</h2><br/>
                     <h:form id="formTable3">
-                        <p:dataTable var="pedido3" value="#{pedidoBean.pedidosSentencasComuns}" id="tabela3">
-                            <p:column headerText="Numero do Processo">
+                        <p:dataTable var="pedido3" value="#{pedidoBean.pedidosSentencasComuns}" id="tabela3" rowIndexVar="rowIndex" resizableColumns="true">
+                            <p:column headerText="#" style="width: 4%">
+                                #{rowIndex+1}
+                            </p:column> 
+                            <p:column headerText="Processo">
                                 <center><h:outputText value="#{pedido3.numeroProcesso}" /></center>
                             </p:column> 
                             <p:column headerText="Classe">
                                 <center><h:outputText value="#{pedido3.classe}" /></center>
                             </p:column>    
-                            <p:column headerText="Tipo">
-                                <center><h:outputText value="#{pedido3.tipo}" /></center>
-                            </p:column>
                             <p:column headerText="OAB">
                                 <center><h:outputText value="#{pedido3.oab}" /></center>
                             </p:column>
-                            <p:column headerText="Data de Conclusão">
+                            <p:column headerText="Conclusão">
                                 <center><h:outputText value="#{pedido3.dataConclusao}" /></center>
                             </p:column>
-                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido3.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido3.id)}" update="tabela3"/>
+                                    <p:inputText value="#{pedido3.justificativa}" placeholder="Justifique" style="width: 55%"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido3.id)}" update="tabela3" style="width: 45%"/>
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -94,26 +100,26 @@
                 <p>
                     <br/><h2>Processos sentenças Prioridade</h2><br/>
                     <h:form id="formTable">
-                        <p:dataTable var="pedido4" value="#{pedidoBean.pedidosSentencasPrioridade}" id="tabela4">
-                            <p:column headerText="Numero do Processo">
-                                <center><h:outputText value="#{pedido4.numeroProcesso}" /></center>
+                        <p:dataTable var="pedido4" value="#{pedidoBean.pedidosSentencasPrioridade}" id="tabela4" rowIndexVar="rowIndex" resizableColumns="true">
+                            <p:column headerText="#" style="width: 4%">
+                                #{rowIndex+1}
+                            </p:column> 
+                            <p:column headerText="Processo">
+                                <center><h:outputText value="#{pedido4.numeroProcesso}"/></center>
                             </p:column> 
                             <p:column headerText="Classe">
                                 <center><h:outputText value="#{pedido4.classe}" /></center>
                             </p:column>    
-                            <p:column headerText="Tipo">
-                                <center><h:outputText value="#{pedido4.tipo}" /></center>
-                            </p:column>
                             <p:column headerText="OAB">
-                                <center><h:outputText value="#{pedido4.oab}" /></center>
+                                <center><h:outputText value="#{pedido4.oab}"/></center>
                             </p:column>
-                            <p:column headerText="Data de Conclusão">
+                            <p:column headerText="Conclusão">
                                 <center><h:outputText value="#{pedido4.dataConclusao}" /></center>
                             </p:column>
-                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}">
+                            <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido4.justificativa}" placeholder="Justifique"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido4.id)}" update="tabela4"/>
+                                    <p:inputText value="#{pedido4.justificativa}" placeholder="Justifique" style="width: 55%"/>
+                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido4.id)}" update="tabela4" style="width: 45%"/>
                                 </center>
                             </p:column>
                         </p:dataTable>

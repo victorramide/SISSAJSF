@@ -40,6 +40,11 @@ public class UsuarioBean implements Serializable {
 
     }
     
+    public String logoff() {
+        usuario.setLogado(false);
+        return "/faces/index.xhtml";
+    }
+    
     public String pagLogin(){
     
         if(!usuario.isLogado()==true){

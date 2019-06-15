@@ -34,19 +34,8 @@
                         <h1>SISSA</h1>
                         <h3>Sistema de Suporte ao Advogado</h3>
                     </div>
-                    <!--
-                    <div class="col-md-4">
-                        <c:choose>
-                            <c:when test="" >
-                                <ui:include src="usuario.xhtml"/>
-                            </c:when>
-                            <c:otherwise>
-                                <ui:include src="form_login.xhtml"/>  
-                            </c:otherwise>
-                        </c:choose> 
-                    </div> -->
 
-                    <h:form id="form-login">
+                    <h:form id="form-login" rendered="#{usuarioBean.usuario.logado == false}">
                         <table border="0">                       
                             <tbody>
                                 <tr>
@@ -63,12 +52,15 @@
                             </tbody>
                         </table>         
                     </h:form>
-
+                    <h:form id="form-logoff" rendered="#{usuarioBean.usuario.logado == true}">
+                        <h4>Seja bem vindo #{usuarioBean.usuario.nome}</h4>
+                        <h:commandButton styleClass="btn btn-secondary" value="sair" action="#{usuarioBean.logoff()}"/>
+                    </h:form>
                 </div>                      
             </header>
 
             <div class="panel panel-default">
-                <div class="panel-body">
+                <div class="panel-body" >
                     <div id="menu">
                         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
                             <!-- Toggler/collapsibe Button -->

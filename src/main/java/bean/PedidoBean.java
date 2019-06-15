@@ -44,14 +44,17 @@ public class PedidoBean {
     }
 
     public void salvar() {
-        if(contarAdvogadoListaComum(pedido.getOab()) >= 3){
+        if (contarAdvogadoListaComum(pedido.getOab()) >= 3 && !pedido.isPrioridade()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Já existem 3 processos vinculados a essa OAB", "Erro de envio!"));
+        }
+        if (contarAdvogadoListaPrioridade(pedido.getOab()) >= 3 && pedido.isPrioridade()) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Já existem 3 processos vinculados a essa OAB", "Erro de envio!"));
         }
         pedidoDAO.save(pedido);
         pedido = new Pedido();
     }
-    
-    public void excluirPedido(Long id){
+
+    public void excluirPedido(Long id) {
         Pedido p = pedidoDAO.delete(id);
         if (p != null) {
             pedido = p;
@@ -59,26 +62,36 @@ public class PedidoBean {
         }
     }
 
-    public void removerPedido(Long id){
+    public void removerPedido(Long id) {
         pedidoDAO.removerPedido(id);
     }
-    
-    public void restaurarPedido(Long id){
+
+    public void restaurarPedido(Long id) {
         pedidoDAO.restaurarPedido(id);
     }
-    
-    public int contarAdvogadoListaComum(String oab){
-        int count=0;
-        for(Pedido p : pedidosComuns){
-            if(p.getOab().equals(oab)){
+
+    public int contarAdvogadoListaComum(String oab) {
+        int count = 0;
+        for (Pedido p : pedidosComuns) {
+            if (p.getOab().equals(oab)) {
                 count++;
+                System.out.println(count);
             }
         }
-        System.out.println(count);
         return count;
     }
-    
-    
+
+    public int contarAdvogadoListaPrioridade(String oab) {
+        int count = 0;
+        for (Pedido p : pedidosPrioridade) {
+            if (p.getOab().equals(oab)) {
+                count++;
+                System.out.println(count);
+            }
+        }
+        return count;
+    }
+
     public Pedido getPedido() {
         return pedido;
     }
