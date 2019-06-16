@@ -8,11 +8,9 @@ package bean;
 import dao.UsuarioDAO;
 import database.Usuario;
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -21,7 +19,7 @@ import javax.faces.context.FacesContext;
  */
 @SessionScoped
 @ManagedBean
-public class UsuarioBean implements Serializable {
+public class UsuarioBean {
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Usuario usuario = new Usuario();

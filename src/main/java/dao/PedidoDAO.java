@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -99,4 +100,25 @@ public class PedidoDAO extends GenericDAO<Pedido, Long> {
         }
         return retorno;
     }
+    
+    public Long contarOabListaComum(String oab){
+        Session sessao = dao.HibernateUtil.getSession();
+        Criteria criteria = sessao.createCriteria(Pedido.class);
+        criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
+        criteria.add(Restrictions.eq("prioridade", false));
+        criteria.add(Restrictions.eq("excluido", false));
+        criteria.setProjection(Projections.rowCount());  
+        return (Long) criteria.uniqueResult();
+    }
+    
+    public Long contarOabListaPrioridade(String oab){
+        Session sessao = dao.HibernateUtil.getSession();
+        Criteria criteria = sessao.createCriteria(Pedido.class);
+        criteria.add(Restrictions.or(Restrictions.eq("tipo", "despacho"), Restrictions.eq("tipo", "decisao")));
+        criteria.add(Restrictions.eq("prioridade", true));
+        criteria.add(Restrictions.eq("excluido", false));
+        criteria.setProjection(Projections.rowCount());  
+        return (Long) criteria.uniqueResult();
+    }
+    
 }

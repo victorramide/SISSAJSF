@@ -13,15 +13,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-//import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author AlunoTI
  */
-@ViewScoped
+@javax.faces.view.ViewScoped
 @ManagedBean
 public class PedidoBean {
 
@@ -36,21 +34,17 @@ public class PedidoBean {
     @PostConstruct
     public void Init() {
         pedido = new Pedido();
-        pedidosComuns = new ArrayList<>();
-        pedidosPrioridade = new ArrayList<>();
-        pedidosSentencasComuns = new ArrayList<>();
-        pedidosSentencasPrioridade = new ArrayList<>();
-        pedidosRemovidos = new ArrayList<>();
         pedidoDAO = new PedidoDAO();
+        pedidosComuns = pedidoDAO.listaPedidoComum();
+        pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
+        pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
+        pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
+        pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+
     }
 
     public void salvar() {
-        if (contarAdvogadoListaComum(pedido.getOab()) >= 3 && !pedido.isPrioridade()) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Já existem 3 processos vinculados a essa OAB", "Erro de envio!"));
-        }
-        if (contarAdvogadoListaPrioridade(pedido.getOab()) >= 3 && pedido.isPrioridade()) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Já existem 3 processos vinculados a essa OAB", "Erro de envio!"));
-        }
+        dataAtual();
         pedidoDAO.save(pedido);
         pedido = new Pedido();
     }
@@ -71,33 +65,14 @@ public class PedidoBean {
         pedidoDAO.restaurarPedido(id);
     }
 
-    public int contarAdvogadoListaComum(String oab) {
-        int count = 0;
-        for (Pedido p : pedidosComuns) {
-            if (p.getOab().equals(oab)) {
-                count++;
-                System.out.println(count);
-            }
-        }
-        return count;
-    }
-
-    public int contarAdvogadoListaPrioridade(String oab) {
-        int count = 0;
-        for (Pedido p : pedidosPrioridade) {
-            if (p.getOab().equals(oab)) {
-                count++;
-                System.out.println(count);
-            }
-        }
-        return count;
-    }
-
-    public Pedido getPedido() {
+    public void dataAtual() {
         Date data = new Date();
-        if(pedido.getDataConclusao() == null){
+        if (pedido.getDataConclusao() == null) {
             pedido.setDataConclusao(data);
         }
+    }
+    
+    public Pedido getPedido() {
         return pedido;
     }
 
