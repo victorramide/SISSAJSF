@@ -19,7 +19,7 @@ import javax.faces.context.FacesContext;
  */
 @SessionScoped
 @ManagedBean
-public class UsuarioBean {
+public class UsuarioBean implements Serializable{
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Usuario usuario = new Usuario();

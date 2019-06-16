@@ -15,7 +15,7 @@
                     <h:form id="formTable">
                         <p:dataTable var="excluido" value="#{pedidoBean.pedidosRemovidos}" id="tabela5"  rowIndexVar="rowIndex" >
                             <p:column headerText="#" style="width: 4%">
-                                #{rowIndex+1}
+                               <center> #{rowIndex+1} </center>
                             </p:column> 
                             <p:column headerText="Processo">
                                 <center><h:outputText value="#{excluido.numeroProcesso}" /></center>
@@ -31,8 +31,8 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" >
                                 <center>
-                                    <p:commandButton value="restaurar" action="#{pedidoBean.restaurarPedido(excluido.id)}" update="tabela5" style="width: 120px; height: 40px" />
-                                    <p:commandButton value="excluir" action="#{pedidoBean.excluirPedido(excluido.id)}" update="tabela5" style="width: 120px; height: 40px" />
+                                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" title="restaurar" ajax="true" actionListener="#{pedidoBean.restaurarPedido(excluido.id)}" update="formTable:tabela5" />
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" actionListener="#{pedidoBean.excluirPedido(excluido.id)}" update="formTable:tabela5" />
                                 </center>
                             </p:column>
                         </p:dataTable>

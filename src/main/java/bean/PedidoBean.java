@@ -7,21 +7,19 @@ package bean;
 
 import dao.PedidoDAO;
 import database.Pedido;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
 /**
  *
  * @author AlunoTI
  */
 @javax.faces.view.ViewScoped
 @ManagedBean
-public class PedidoBean {
+public class PedidoBean implements Serializable {
 
     private Pedido pedido;
     private List<Pedido> pedidosComuns;
@@ -35,11 +33,11 @@ public class PedidoBean {
     public void Init() {
         pedido = new Pedido();
         pedidoDAO = new PedidoDAO();
-        pedidosComuns = pedidoDAO.listaPedidoComum();
-        pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
-        pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
-        pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
-        pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+        pedidosComuns = new ArrayList<>();
+        pedidosPrioridade = new ArrayList<>();
+        pedidosSentencasComuns = new ArrayList<>();
+        pedidosSentencasPrioridade = new ArrayList<>();
+        pedidosRemovidos = new ArrayList<>();
 
     }
 
@@ -47,22 +45,40 @@ public class PedidoBean {
         dataAtual();
         pedidoDAO.save(pedido);
         pedido = new Pedido();
+        this.pedidosComuns = pedidoDAO.listaPedidoComum();
+        this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
+        this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
+        this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
     }
 
     public void excluirPedido(Long id) {
         Pedido p = pedidoDAO.delete(id);
         if (p != null) {
             pedido = p;
-            pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+            this.pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+            this.pedidosComuns = pedidoDAO.listaPedidoComum();
+            this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
+            this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
+            this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
         }
     }
 
     public void removerPedido(Long id) {
         pedidoDAO.removerPedido(id);
+        this.pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+        this.pedidosComuns = pedidoDAO.listaPedidoComum();
+        this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
+        this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
+        this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
     }
 
     public void restaurarPedido(Long id) {
         pedidoDAO.restaurarPedido(id);
+        this.pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
+        this.pedidosComuns = pedidoDAO.listaPedidoComum();
+        this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
+        this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
+        this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
     }
 
     public void dataAtual() {
@@ -71,7 +87,7 @@ public class PedidoBean {
             pedido.setDataConclusao(data);
         }
     }
-    
+
     public Pedido getPedido() {
         return pedido;
     }

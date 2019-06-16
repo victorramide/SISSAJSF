@@ -17,7 +17,7 @@
                     <h:form id="formTable1">
                         <p:dataTable var="pedido1" value="#{pedidoBean.pedidosComuns}" id="tabela1" rowIndexVar="rowIndex" resizableColumns="true">
                             <p:column headerText="#" style="width: 4%">
-                                #{rowIndex+1}
+                                <center> #{rowIndex+1} </center>
                             </p:column> 
                             <p:column headerText="Processo">
                                 <center> <h:outputText value="#{pedido1.numeroProcesso}" /></center>
@@ -33,8 +33,8 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido1.justificativa}" placeholder="Justifique" style="width: 55%"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido1.id)}" update="tabela1" style="width: 45%"/>
+                                    <p:inputText value="#{pedido1.justificativa}" placeholder="Justifique" style="width: 75%" required="true"/>
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" actionListener="#{pedidoBean.removerPedido(pedido1.id)}" update="formTable1:tabela1" />
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -45,7 +45,7 @@
                     <h:form id="formTable2">
                         <p:dataTable var="pedido2" value="#{pedidoBean.pedidosPrioridade}" id="tabela2" rowIndexVar="rowIndex" resizableColumns="true">
                             <p:column headerText="#" style="width: 4%">
-                                #{rowIndex+1}
+                                <center> #{rowIndex+1} </center>
                             </p:column> 
                             <p:column headerText="Processo">
                                 <center> <h:outputText value="#{pedido2.numeroProcesso}" /></center>
@@ -61,8 +61,8 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido2.justificativa}" placeholder="Justifique" style="width: 55%"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido2.id)}" update="tabela2" style="width: 45%"/>
+                                    <p:inputText value="#{pedido2.justificativa}" placeholder="Justifique" style="width: 75%" required="true"/>
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" actionListener="#{pedidoBean.removerPedido(pedido2.id)}" update="formTable2:tabela2" />
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -73,7 +73,7 @@
                     <h:form id="formTable3">
                         <p:dataTable var="pedido3" value="#{pedidoBean.pedidosSentencasComuns}" id="tabela3" rowIndexVar="rowIndex" resizableColumns="true">
                             <p:column headerText="#" style="width: 4%">
-                                #{rowIndex+1}
+                                <center> #{rowIndex+1} </center>
                             </p:column> 
                             <p:column headerText="Processo">
                                 <center><h:outputText value="#{pedido3.numeroProcesso}" /></center>
@@ -89,8 +89,8 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido3.justificativa}" placeholder="Justifique" style="width: 55%"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido3.id)}" update="tabela3" style="width: 45%"/>
+                                    <p:inputText value="#{pedido3.justificativa}" placeholder="Justifique" style="width: 75%" required="true"/>
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" actionListener="#{pedidoBean.removerPedido(pedido3.id)}" update="formTable3:tabela3" />
                                 </center>
                             </p:column>
                         </p:dataTable>
@@ -98,10 +98,10 @@
                 </p>
                 <p>
                     <br/><h2>Processos sentenças prioridade</h2><br/>
-                    <h:form id="formTable">
+                    <h:form id="formTable4">
                         <p:dataTable var="pedido4" value="#{pedidoBean.pedidosSentencasPrioridade}" id="tabela4" rowIndexVar="rowIndex" resizableColumns="true">
                             <p:column headerText="#" style="width: 4%">
-                                #{rowIndex+1}
+                                <center> #{rowIndex+1} </center>
                             </p:column> 
                             <p:column headerText="Processo">
                                 <center><h:outputText value="#{pedido4.numeroProcesso}"/></center>
@@ -117,8 +117,8 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" style="width: 25%">
                                 <center>
-                                    <p:inputText value="#{pedido4.justificativa}" placeholder="Justifique" style="width: 55%"/>
-                                    <p:commandButton value="excluir" actionListener="#{pedidoBean.removerPedido(pedido4.id)}" update="tabela4" style="width: 45%"/>
+                                    <p:inputText value="#{pedido4.justificativa}" placeholder="Justifique" style="width: 75%" required="true"/>
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" actionListener="#{pedidoBean.removerPedido(pedido4.id)}" update="formTable4:tabela4" />
                                 </center>
                             </p:column>
                         </p:dataTable>
