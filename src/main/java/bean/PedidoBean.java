@@ -13,10 +13,12 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author AlunoTI
  */
+
 @javax.faces.view.ViewScoped
 @ManagedBean
 public class PedidoBean implements Serializable {
@@ -45,40 +47,21 @@ public class PedidoBean implements Serializable {
         dataAtual();
         pedidoDAO.save(pedido);
         pedido = new Pedido();
-        this.pedidosComuns = pedidoDAO.listaPedidoComum();
-        this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
-        this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
-        this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
     }
 
     public void excluirPedido(Long id) {
         Pedido p = pedidoDAO.delete(id);
         if (p != null) {
             pedido = p;
-            this.pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
-            this.pedidosComuns = pedidoDAO.listaPedidoComum();
-            this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
-            this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
-            this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
         }
     }
 
     public void removerPedido(Long id) {
         pedidoDAO.removerPedido(id);
-        this.pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
-        this.pedidosComuns = pedidoDAO.listaPedidoComum();
-        this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
-        this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
-        this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
     }
 
     public void restaurarPedido(Long id) {
         pedidoDAO.restaurarPedido(id);
-        this.pedidosRemovidos = pedidoDAO.listaPedidoRemovido();
-        this.pedidosComuns = pedidoDAO.listaPedidoComum();
-        this.pedidosPrioridade = pedidoDAO.listaPedidoPrioridade();
-        this.pedidosSentencasComuns = pedidoDAO.listaPedidoSentencaComum();
-        this.pedidosSentencasPrioridade = pedidoDAO.listaPedidoSentencaPrioridade();
     }
 
     public void dataAtual() {

@@ -31,8 +31,8 @@
                             </p:column>
                             <p:column headerText="Remover" rendered="#{usuarioBean.usuario.logado == true}" >
                                 <center>
-                                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" title="restaurar" ajax="true" actionListener="#{pedidoBean.restaurarPedido(excluido.id)}" update="formTable:tabela5" />
-                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" actionListener="#{pedidoBean.excluirPedido(excluido.id)}" update="formTable:tabela5" />
+                                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" title="restaurar" ajax="true" action="#{pedidoBean.restaurarPedido(excluido.id)}" update="formTable:tabela5"/>
+                                    <p:commandButton icon="ui-icon-trash" title="Excluir" ajax="true" action="#{pedidoBean.excluirPedido(excluido.id)}" update="formTable:tabela5"/>
                                 </center>
                             </p:column>
                         </p:dataTable>

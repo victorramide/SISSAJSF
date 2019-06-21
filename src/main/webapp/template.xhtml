@@ -53,7 +53,7 @@
                         </table>         
                     </h:form>
                     <h:form id="form-logoff" rendered="#{usuarioBean.usuario.logado == true}">
-                        <h4>Seja bem vindo #{usuarioBean.usuario.nome}</h4>
+                        <h4>Seja bem vindo, #{usuarioBean.usuario.nome}</h4>
                         <h:commandButton styleClass="btn btn-secondary" value="sair" action="#{usuarioBean.logoff()}"/>
                     </h:form>
                 </div>                      
